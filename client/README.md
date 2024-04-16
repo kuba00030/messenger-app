@@ -1,30 +1,21 @@
-# React + TypeScript + Vite
+# Content
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [Project description](#project-description)
+- [Main purpose](#main-purpose)
+- [Things to come](#things-to-come)
 
-Currently, two official plugins are available:
+# Project description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The web application enabling real-time conversations modeled on popular applications such as WhatsApp and Facebook Messenger. Users can create private accounts, add other users to their friends list, send text messages and files, and track their friends' activity. The application stores the history of each conversation.
 
-## Expanding the ESLint configuration
+# Main purpose
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Main goal of the project
 
-- Configure the top-level `parserOptions` property like this:
+- Improving skills in writing code that is readable, easy to maintain and as optimal as possible by focusing on writing code consistent with SOLID principles
+- Acquiring skills in writing tests using the 'jest' and 'cypress' libraries
+- Learning Go language in the field of backend
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+# Things to come
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+The rest of the readme file will be updated and added along with code snippets and functionality once the application writing process is completed
