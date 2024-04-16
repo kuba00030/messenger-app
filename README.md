@@ -18,4 +18,6 @@ Main goal of the project
 
 # Things to come
 
-The rest of the readme file will be updated and added along with code snippets and functionality once the application writing process is completed
+- Tests (jest & cypress)
+- Backend (Go)
+  The rest of the readme file will be updated and added along with code snippets and functionality once the application writing process is completed
