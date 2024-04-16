@@ -1,0 +1,89 @@
+:root {
+  /* font size */
+  --fs-xs: clamp(12px, 2vw, 14px);
+  --fs-sm: clamp(13px, 2vw, 16px);
+  --fs-m: clamp(16px, 2vw, 20px);
+  --fs-l: clamp(20px, 2vw, 26px);
+  --fs-xl: clamp(22px, 2vw, 34px);
+  --fs-xxl: clamp(24px, 3vw, 51px);
+  /* font color */
+  --fc-dark: #212529;
+  --fc-gray: #9fa6b2;
+  --fc-green-default: rgb(89, 179, 149);
+  /* background color */
+  --color-default: rgb(89, 179, 149);
+  /* border colors */
+  --brc-gray: #9fa6b2;
+  /* transition time */
+  --tr-02: 0.2s ease-in-out;
+}
+ul {
+  padding: 0px !important;
+  margin: 0px !important;
+  list-style: none;
+}
+li {
+  padding: 0px;
+  margin: 0px;
+}
+/* transition time */
+.tr-02 {
+  transition: var(--tr-02);
+}
+/* font size */
+.fs-sm {
+  font-size: var(--fs-sm) !important;
+}
+.fs-m {
+  font-size: var(--fs-m) !important;
+}
+.fs-l {
+  font-size: var(--fs-l) !important;
+}
+.fs-xl {
+  font-size: var(--fs-xl) !important;
+}
+.fs-xxl {
+  font-size: var(--fs-xxl) !important;
+}
+/* font color */
+.fc-green-default {
+  color: var(--fc-green-default);
+}
+/* button */
+.btn-empty {
+  background-color: transparent !important;
+}
+.btn-empty:hover {
+  background-color: var(--color-default) !important;
+}
+.btn-fill {
+  background-color: var(--color-default) !important;
+  border: solid 1px var(--color-default) !important;
+}
+.btn-fill:hover {
+  background-color: transparent !important;
+}
+.btn-fill-dark {
+  background-color: var(--color-default) !important;
+  border: solid 1px var(--color-default) !important;
+}
+.btn-fill-dark:hover {
+  background-color: transparent !important;
+  color: var(--fc-dark) !important;
+}
+/* input */
+.custom-input-focus:focus {
+  border-color: var(--color-default) !important;
+}
+input:autofill,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* if field is autocompleded it takes 5000s to change it color */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #23232329;
+}
