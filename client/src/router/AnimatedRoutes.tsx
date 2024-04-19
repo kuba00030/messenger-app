@@ -7,8 +7,6 @@ import { Home } from "../pages/home/Home";
 import { SignUp } from "../pages/auth/SignUp";
 import { AnimatePresence } from "framer-motion";
 import { ForgetPassowrd } from "../pages/auth/forget-password/ForgetPassword";
-import { EmailVeryfication } from "../pages/auth/forget-password/EmailVeryfication";
-import { NewPassword } from "../pages/auth/forget-password/NewPassword";
 import { useUserContext } from "../context/userContext/userContext";
 
 export const AnimatedRoutes = () => {
@@ -25,11 +23,6 @@ export const AnimatedRoutes = () => {
               <Route index element={<SignIn />} />
               <Route path="forget_password">
                 <Route index element={<ForgetPassowrd />} />
-                <Route
-                  path="email_veryfication"
-                  element={<EmailVeryfication />}
-                />
-                <Route path="new_password" element={<NewPassword />} />
               </Route>
             </Route>
             <Route path="sign_up" element={<SignUp />} />

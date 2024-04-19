@@ -24,7 +24,7 @@ export const ForgetPassowrd = () => {
   } = useForm<Fields>({ resolver: zodResolver(emailValidation) });
 
   const submit: SubmitHandler<Fields> = (data) => {
-    // if response => navigate to email_veryfication
+    // if response => send reset password msg (firebase) to "....email"
     console.log(data);
   };
 
