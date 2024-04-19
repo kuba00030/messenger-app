@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router";
 
 export const useNavigateTo = () => {
-  const navigationTo = useNavigate();
+  const navigate = useNavigate();
 
-  const navigateTo = (path: string) => {
-    navigationTo(path);
+  const navigateTo = (path: string, replace: boolean) => {
+    navigate(path, { replace: replace });
   };
 
   return { navigateTo };

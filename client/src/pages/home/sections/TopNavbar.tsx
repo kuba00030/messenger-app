@@ -3,31 +3,31 @@ import { NavLink } from "../../../components/ui/nav-links/NavLink";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
+const navLinks: NavLink[] = [
+  {
+    href: "/#home",
+    value: "Home",
+  },
+  {
+    href: "/#product",
+    value: "Product",
+  },
+  {
+    href: "/#about",
+    value: "About us",
+  },
+  {
+    href: "sign_in",
+    value: "Sign in",
+  },
+  {
+    className:
+      "btn-fill fw-bold navbar-link fs-sm rounded-pill btn-empty text-light p-2 px-md-4 tr-02",
+    href: "sign_up",
+    value: "Get Started",
+  },
+];
 export const TopNavbar = () => {
-  const navLinks: NavLink[] = [
-    {
-      href: "/#home",
-      value: "Home",
-    },
-    {
-      href: "/#product",
-      value: "Product",
-    },
-    {
-      href: "/#about",
-      value: "About us",
-    },
-    {
-      href: "sign_in",
-      value: "Sign in",
-    },
-    {
-      className:
-        "btn-fill fw-bold navbar-link fs-sm rounded-pill btn-empty text-light p-2 px-md-4",
-      href: "sign_up",
-      value: "Get Started",
-    },
-  ];
   return (
     <Navbar
       expand="sm"
@@ -59,7 +59,7 @@ export const TopNavbar = () => {
                 className={
                   link.className
                     ? link.className
-                    : "fw-bold navbar-link fs-sm rounded-pill btn-empty text-light p-2 px-md-4"
+                    : "fw-bold navbar-link fs-sm rounded-pill btn-empty text-light p-2 px-md-4 tr-02"
                 }
                 href={link.href}
                 value={link.value}

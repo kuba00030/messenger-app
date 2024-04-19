@@ -24,6 +24,7 @@ export const NewPassword = () => {
   } = useForm<Fields>({ resolver: zodResolver(newPasswordValidation) });
 
   const submit: SubmitHandler<Fields> = (data) => {
+    //  if respone => navigate to sign_in
     console.log(data);
   };
 

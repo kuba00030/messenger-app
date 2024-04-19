@@ -26,6 +26,7 @@ export const EmailVeryfication = () => {
   } = useForm<Fields>({ resolver: zodResolver(schema) });
 
   const submit: SubmitHandler<Fields> = (data) => {
+    // if response => navigate to new_password
     console.log(data);
   };
 

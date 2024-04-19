@@ -24,6 +24,7 @@ export const ForgetPassowrd = () => {
   } = useForm<Fields>({ resolver: zodResolver(emailValidation) });
 
   const submit: SubmitHandler<Fields> = (data) => {
+    // if response => navigate to email_veryfication
     console.log(data);
   };
 
@@ -40,8 +41,8 @@ export const ForgetPassowrd = () => {
             use for sign in to
             <span className="fc-green-default"> Lorem </span>
             <span className="text-light fw-semibold fs-sm">
-              so we can send you a{" "}
-              <span className="fc-green-default">verification code</span>
+              so we can send you a
+              <span className="fc-green-default"> verification code</span>
             </span>
           </span>
           {formFields.map((field) => {

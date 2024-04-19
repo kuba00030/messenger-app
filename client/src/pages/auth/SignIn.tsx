@@ -5,10 +5,11 @@ import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { SubmitButton } from "../../components/ui/buttons/submit-buttons/SubmitButton";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { FormFields } from "./SignUp";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { validatePassword } from "../../components/utils/form/validation/passwordValidation";
+import { FormFields } from "../../components/utils/form/validation/signUpValidation";
+import { useLocalStorage } from "../../hooks/local-storage/useLocalStorage";
 
 const formFields: FormFields = [
   { name: "email", label: "E-mail", type: "text" },
@@ -28,8 +29,10 @@ export const SignIn = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<Fields>({ resolver: zodResolver(schema) });
+  const { setItem } = useLocalStorage("user");
 
   const submit: SubmitHandler<Fields> = (data) => {
+    //  if respone => set user + localStorage
     console.log(data);
   };
 
