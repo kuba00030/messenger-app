@@ -6,7 +6,7 @@ export type User = {
   name: string;
   lastName: string;
   email: string;
-  img: any;
+  img: any | null;
 };
 
 type UserContext = {
@@ -21,7 +21,13 @@ export const UserContext = createContext<UserContext | null>(null);
 
 export const UserContextProvider = ({ children }: ContextProviderProps) => {
   const { getItem } = useLocalStorage("user");
-  const [user] = useState<User | null>(getItem());
+  const [user] = useState<User | null>({
+    id: "aaa",
+    name: "bbb",
+    lastName: "ccc",
+    email: "aaa@ccc.pl",
+    img: null,
+  });
 
   return (
     <UserContext.Provider

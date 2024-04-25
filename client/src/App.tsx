@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
     <UserContextProvider>
-      <Router />;
+      <Router />
     </UserContextProvider>
   );
 }

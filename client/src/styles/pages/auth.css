@@ -6,7 +6,6 @@
   position: relative;
   display: flex;
   border: solid var(--brc-gray) 1px;
-  border-radius: 0.5rem;
 }
 .custom-floating-label {
   position: absolute;

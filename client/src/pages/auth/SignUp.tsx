@@ -61,10 +61,11 @@ export const SignUp = () => {
                 key={field.name}
                 id={field.name}
                 inputType={field.type}
-                labelVal={field.label}
-                error={errors[field.name as keyof Fields]?.message?.toString()}
+                containerClass="rounded-2"
                 inputClass="custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 text-light fw-bold"
                 labelClass="mx-2 bg-dark fs-sm text-light fw-bold tr-02"
+                labelVal={field.label}
+                error={errors[field.name as keyof Fields]?.message?.toString()}
                 {...register(field.name as keyof Fields)}
               />
             );
@@ -72,7 +73,7 @@ export const SignUp = () => {
 
           <div className="d-flex flex-column gap-2">
             <SubmitButton
-              buttonClass="btn-fill fw-bold m-0"
+              buttonClass="btn-fill fw-bold m-0 rounded-2"
               value="Sign up"
               onClick={handleSubmit(submit)}
             />

@@ -6,16 +6,26 @@ import { forwardRef } from "react";
 
 type FloatingLabel = {
   id: string;
+  containerClass?: string;
+  inputClass?: string;
   inputType: string;
+  labelClass?: string;
   labelVal: string;
   error: string | undefined;
-  inputClass?: string;
-  labelClass?: string;
 };
 
 export const InputFloatingLabel = forwardRef<HTMLInputElement, FloatingLabel>(
   function InputFloatingLabel(
-    { id, inputType, labelVal, error, inputClass, labelClass, ...rest },
+    {
+      id,
+      inputType,
+      labelVal,
+      error,
+      inputClass,
+      labelClass,
+      containerClass,
+      ...rest
+    },
     ref
   ) {
     const showPassword = useShowPassword(inputType);
@@ -30,7 +40,9 @@ export const InputFloatingLabel = forwardRef<HTMLInputElement, FloatingLabel>(
           )
         }
       >
-        <div className="custom-floating-group align-items-center">
+        <div
+          className={`custom-floating-group align-items-center ${containerClass}`}
+        >
           <input
             id={id}
             type={showPassword.inputType}

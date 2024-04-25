@@ -1,3 +1,14 @@
+import { Outlet } from "react-router";
+import { SideBar } from "./sections/SideBar";
+import "../../styles/pages/dashboard/dashboard.css";
+
 export const Dashboard = () => {
-  return <h1>Dashboard</h1>;
+  return (
+    <div className="dashboard-wrapper d-flex justify-content-center align-items-center">
+      <div className="dashboard-container d-flex flex-row overflow-hidden bg-dark">
+        <SideBar />
+        <Outlet />
+      </div>
+    </div>
+  );
 };

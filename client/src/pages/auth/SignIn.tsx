@@ -49,11 +49,12 @@ export const SignIn = () => {
                 <InputFloatingLabel
                   key={field.name}
                   id={field.name}
+                  containerClass="rounded-2"
+                  inputClass="custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 text-light fw-bold"
                   inputType={field.type}
+                  labelClass="mx-2 bg-dark fs-sm text-light fw-bold tr-02"
                   labelVal={field.label}
                   error={errors[field.name as keyof Fields]?.message}
-                  inputClass="custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 text-light fw-bold"
-                  labelClass="mx-2 bg-dark fs-sm text-light fw-bold tr-02"
                   {...register(field.name as keyof Fields)}
                 />
               );
@@ -61,7 +62,7 @@ export const SignIn = () => {
             <Link to={"forget_password"}>Forget the password?</Link>
             <div className="d-flex flex-column gap-2">
               <SubmitButton
-                buttonClass="btn-fill fw-bold m-0"
+                buttonClass="btn-fill fw-bold rounded-2 m-0"
                 value="Sign up"
                 onClick={handleSubmit(submit)}
               />

@@ -14,12 +14,12 @@ export const Intro = () => {
             vel beatae consequuntur odit? Dolorem culpa, explicabo cum repellat
             obcaecati quae tempore.
           </p>
-          <Button className="btn-fill-dark fw-bold px-5 rounded-pill">
+          <Button className="btn-fill-dark fw-bold px-5 rounded-2">
             Learn more
           </Button>
         </div>
 
-        <img src="../public/HomeImg.jpeg" className="home-img rounded-5" />
+        <img src="../public/HomeImg.jpeg" className="home-img rounded-4" />
       </article>
     </section>
   );

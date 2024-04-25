@@ -22,7 +22,7 @@ const navLinks: NavLink[] = [
   },
   {
     className:
-      "btn-fill fw-bold navbar-link fs-sm rounded-pill btn-empty text-light p-2 px-md-4 tr-02",
+      "btn-fill fw-semibold navbar-link fs-sm rounded-2 text-light p-2 px-md-4 tr-02",
     href: "sign_up",
     value: "Get Started",
   },
@@ -31,17 +31,14 @@ export const TopNavbar = () => {
   return (
     <Navbar
       expand="sm"
-      bg="dark"
-      variant="dark"
-      className="d-flex flex-row justify-content-end m-0 py-4"
+      className="d-flex flex-row justify-content-end bg-dark m-0 py-4 py-md-0"
     >
       <Navbar.Toggle
-        className="border-0 shadow-none m-0"
+        className="border-0 shadow-none m-0 menu-icon"
         aria-controls="main-mobile-menu"
       />
       <Navbar.Offcanvas
-        variant="dark"
-        className="bg-dark text-center p-0 m-0 w-75"
+        className="bg-dark text-center py-4 w-75"
         id="main-mobile-menu"
         placement="end"
       >
@@ -49,9 +46,9 @@ export const TopNavbar = () => {
           closeButton
           closeVariant="white"
           aria-controls="main-mobile-menu"
-          className="me-auto text-light"
+          className="me-auto ms-4 p-0 text-light"
         ></Offcanvas.Header>
-        <Nav className="d-flex justify-content-end gap-2 gap-lg-4 mx-auto mx-sm-0">
+        <Nav className="d-flex justify-content-end gap-4 mx-auto mx-sm-0">
           {navLinks.map((link) => {
             return (
               <NavLink
@@ -59,7 +56,7 @@ export const TopNavbar = () => {
                 className={
                   link.className
                     ? link.className
-                    : "fw-bold navbar-link fs-sm rounded-pill btn-empty text-light p-2 px-md-4 tr-02"
+                    : "fw-semibold navbar-link fs-sm rounded-2 btn-empty text-light p-2 px-md-4 tr-02"
                 }
                 href={link.href}
                 value={link.value}

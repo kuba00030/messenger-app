@@ -16,19 +16,18 @@ export const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        {!user && (
-          <Route path="/" element={<Default />}>
-            <Route index element={<Home />} />
-            <Route path="sign_in">
-              <Route index element={<SignIn />} />
-              <Route path="forget_password">
-                <Route index element={<ForgetPassowrd />} />
-              </Route>
+        <Route path="/" element={<Default />}>
+          <Route index element={<Home />} />
+          <Route path="sign_in">
+            <Route index element={<SignIn />} />
+            <Route path="forget_password">
+              <Route index element={<ForgetPassowrd />} />
             </Route>
-            <Route path="sign_up" element={<SignUp />} />
           </Route>
-        )}
-        {user && <Route path="dashboard" element={<Dashboard />} />}
+          <Route path="sign_up" element={<SignUp />} />
+        </Route>
+
+        {user && <Route path="dashboard" element={<Dashboard />}></Route>}
       </Routes>
     </AnimatePresence>
   );
