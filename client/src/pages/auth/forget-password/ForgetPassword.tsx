@@ -6,8 +6,8 @@ import { InputFloatingLabel } from "../../../components/ui/inputs/floating-label
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { FormFields } from "../../../components/utils/form/validation/signUpValidation";
-import { emailValidation } from "../../../components/utils/form/validation/emailValidation";
+import { emailValidation } from "../../../utils/form/validation/input-validation/inputValidation";
+import { FormFields } from "../../../utils/form/validation/signUpValidation";
 
 type Fields = z.infer<typeof emailValidation>;
 

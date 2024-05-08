@@ -1,5 +1,5 @@
 import { Form } from "react-bootstrap";
-import { TransitionSlideIn } from "../../transition/slide-in/TransitionSlideIn";
+import { TransitionContainer } from "../../transition/container/TransitionContainer";
 
 type AuthForm = {
   formBody: React.ReactNode;
@@ -7,8 +7,8 @@ type AuthForm = {
 
 export const AuthForm = ({ formBody }: AuthForm) => {
   return (
-    <TransitionSlideIn
-      containerClass="d-flex flex-fill justify-content-center align-items-center p-0"
+    <TransitionContainer
+      className="d-flex flex-fill justify-content-center align-items-center p-0"
       initial={{ opacity: 0, x: "-50%", scale: 0.5, borderRadius: "100px" }}
       animate={{
         opacity: 1,
@@ -23,11 +23,10 @@ export const AuthForm = ({ formBody }: AuthForm) => {
         transition: { duration: 0.5, type: "spring" },
         opacity: 0,
       }}
-      page={
-        <Form className="auth-container d-flex flex-column text-center gap-4 my-sm-4 bg-dark">
-          {formBody}
-        </Form>
-      }
-    />
+    >
+      <Form className="auth-container d-flex flex-column text-center gap-4 my-sm-4 bg-dark my-overflow-x-hidden">
+        {formBody}
+      </Form>
+    </TransitionContainer>
   );
 };

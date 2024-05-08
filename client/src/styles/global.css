@@ -27,6 +27,9 @@ li {
   padding: 0px;
   margin: 0px;
 }
+.my-overflow-x-hidden {
+  overflow-x: hidden !important;
+}
 /* transition time */
 .tr-02 {
   transition: var(--tr-02);
@@ -96,4 +99,9 @@ input:-webkit-autofill:active {
 /* navbar */
 .menu-icon {
   filter: invert(100%) !important;
+}
+/* lists */
+.li-hover-dark:hover {
+  filter: opacity(0.5);
+  background-color: rgba(255, 255, 255, 0.178);
 }

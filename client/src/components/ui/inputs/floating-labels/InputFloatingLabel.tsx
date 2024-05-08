@@ -4,7 +4,7 @@ import { PasswordVisbilityToggle } from "../../buttons/show-buttons/PasswordVisi
 import { useShowPassword } from "../../../../hooks/form/password-field/useShowPassword";
 import { forwardRef } from "react";
 
-type FloatingLabel = {
+export type FloatingLabel = {
   id: string;
   containerClass?: string;
   inputClass?: string;

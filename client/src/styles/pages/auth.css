@@ -26,6 +26,7 @@
   font-size: var(--fs-xs) !important;
   color: var(--brc-gray) !important;
 }
+
 @media only screen and (max-width: 575px) {
   .auth-container {
     width: 100%;

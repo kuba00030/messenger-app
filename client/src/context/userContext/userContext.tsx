@@ -28,7 +28,7 @@ export const UserContextProvider = ({ children }: ContextProviderProps) => {
     email: "aaa@ccc.pl",
     img: null,
   });
-
+  //  false || getItem();
   return (
     <UserContext.Provider
       value={{
