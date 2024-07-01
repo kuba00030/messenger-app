@@ -4,8 +4,8 @@ import "../../styles/pages/dashboard/dashboard.css";
 
 export const Dashboard = () => {
   return (
-    <div className="dashboard-wrapper d-flex justify-content-center align-items-center">
-      <div className="dashboard-container d-flex flex-row overflow-hidden bg-dark">
+    <div className="dashboard-wrapper d-flex justify-content-center align-items-center bg-secondary">
+      <div className="dashboard-container d-flex flex-row overflow-hidden bg-light">
         <SideBar />
         <Outlet />
       </div>

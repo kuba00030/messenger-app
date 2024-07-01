@@ -1,0 +1,33 @@
+.inbox-chat-container {
+  box-shadow: var(--bx-sm) !important;
+}
+.inbox-chat-container:hover {
+  box-shadow: var(--bx-m) !important;
+}
+.inbox-message-badge {
+  background-color: var(--color-default);
+  width: 20px;
+  height: 20px;
+}
+/* chat window */
+.break {
+  word-break: break-all;
+}
+
+.chat-input {
+  box-shadow: var(--bx-sm);
+}
+.chat-input:hover {
+  box-shadow: var(--bx-m);
+}
+.send-btn {
+  transform: rotate(45deg);
+}
+.send-btn:hover {
+  transform: rotate(0deg);
+}
+@media only screen and (max-width: 768px) {
+  .inbox-chat-container {
+    box-shadow: none !important;
+  }
+}

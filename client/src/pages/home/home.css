@@ -1,0 +1,9 @@
+#home {
+  min-height: 70vh;
+}
+
+#home,
+#product,
+#about {
+  margin-top: clamp(20px, 10vh, 50px);
+}

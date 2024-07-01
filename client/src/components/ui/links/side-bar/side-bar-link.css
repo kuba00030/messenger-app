@@ -1,0 +1,18 @@
+.side-bar-link {
+  width: 100px;
+  height: 100px;
+}
+.side-bar-link-h-b-default:hover {
+  border-color: var(--color-default) !important;
+}
+.icon-badge {
+  top: 0px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+}
+@media only screen and (min-width: 576px) {
+  .side-bar-container {
+    padding: 0px clamp(10px, 2vw, 50px) !important;
+  }
+}

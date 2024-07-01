@@ -3,12 +3,18 @@ import { TransitionContainer } from "../../transition/container/TransitionContai
 
 type AuthForm = {
   formBody: React.ReactNode;
+  containerClass?: string;
+  formClass?: string;
 };
 
-export const AuthForm = ({ formBody }: AuthForm) => {
+export const AuthForm = ({ formBody, containerClass, formClass }: AuthForm) => {
   return (
     <TransitionContainer
-      className="d-flex flex-fill justify-content-center align-items-center p-0"
+      className={
+        containerClass
+          ? containerClass
+          : "d-flex flex-fill justify-content-center align-items-center p-0"
+      }
       initial={{ opacity: 0, x: "-50%", scale: 0.5, borderRadius: "100px" }}
       animate={{
         opacity: 1,
@@ -24,7 +30,13 @@ export const AuthForm = ({ formBody }: AuthForm) => {
         opacity: 0,
       }}
     >
-      <Form className="auth-container d-flex flex-column text-center gap-4 my-sm-4 bg-dark my-overflow-x-hidden">
+      <Form
+        className={
+          formClass
+            ? formClass
+            : "auth-container d-flex flex-column text-center gap-4 my-sm-4 bg-dark my-overflow-x-hidden"
+        }
+      >
         {formBody}
       </Form>
     </TransitionContainer>

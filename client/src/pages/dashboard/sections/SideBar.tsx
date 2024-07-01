@@ -1,13 +1,15 @@
-import "../../../styles/pages/dashboard/side-bar/sideBar.css";
-import { NavLink } from "../../../components/ui/nav-links/NavLink";
-import { SideBarLink } from "../../../components/ui/nav-links/SideBarLink";
+import { SideBarLink } from "../../../components/ui/links/side-bar/SideBarLink";
 import { Button, Navbar, Offcanvas } from "react-bootstrap";
 import { NotificationBadge } from "../../../components/ui/badges/NotificationBadge";
+import { Avatar } from "../../../components/ui/avatar/Avatar";
+import { useNavbarContext } from "../../../context/navbar/navbarContext";
+import { Link } from "../../../hooks/nav-bar/nav-links/useNavLinks";
+import { PrimaryButton } from "../../../components/ui/buttons/primary-button/PrimaryButton";
 
-const navLinks: NavLink[] = [
+const navLinks: Link[] = [
   { href: "inbox", value: "Inbox" },
-  { href: "add_friend", value: "Add friend" },
-  { href: "notification", value: "Notification" },
+  { href: "add-friend", value: "Add friend" },
+  { href: "notifications", value: "Notification" },
   { href: "settings", value: "Settings" },
 ];
 
@@ -17,66 +19,73 @@ const iconsArray: string[] = [
   "bi bi-bell-fill",
   "bi bi-gear-fill",
 ];
+
 export const SideBar = () => {
+  const { isOpened, setIsOpened, activeLink, setCurrentLink } =
+    useNavbarContext();
   return (
     <Navbar
       expand="md"
-      className="side-bar-container d-flex flex-column justify-content-between py-4 gap-4 "
+      className="d-flex flex-column justify-content-between px-0 px-md-4 py-sm-0 gap-4 bg-dark"
     >
-      <Navbar.Toggle
-        className="border-0 shadow-none ms-auto menu-icon"
-        aria-controls="main-mobile-menu"
-      />
       <Navbar.Offcanvas
-        className="bg-dark d-flex flex-column py-4 w-75"
+        className="bg-dark d-flex flex-column justify-content-between mt-0 w-75 overflow-auto py-4"
         id="main-mobile-menu"
         placement="start"
+        show={isOpened}
       >
         <Offcanvas.Header
           closeButton
+          onClick={() => setIsOpened(!isOpened)}
           closeVariant="white"
           aria-controls="main-mobile-menu"
-          className="ms-auto me-4 p-0 text-light"
+          className="ms-auto me-4 text-light"
         ></Offcanvas.Header>
-        <div className="avatar-img mx-auto rounded-circle mt-4 mb-auto bg-light"></div>
+        <Avatar className="avatar-img-sm flex-shrink-0 mx-auto mb-auto mb-md-0 rounded-circle bg-light" />
         <Navbar className="d-flex flex-column gap-4">
           {navLinks.map((link, index) => {
             if (link.value === "Settings") {
               return (
                 <SideBarLink
-                  href={"/dashboard"}
-                  className="side-bar-link d-flex flex-column justify-content-center align-items-center text-light p-3 rounded-2 tr-02"
-                  text={link.value}
-                  textClass="side-bar-link-value fs-xs fw-semibold"
-                  icon={
-                    <NotificationBadge
-                      iconClass={`${iconsArray[index]} position-relative m-auto fs-3`}
-                    />
-                  }
+                  key={index}
+                  activeHref={activeLink}
+                  onClick={() => setCurrentLink(link.href)}
+                  href={"/settings"}
+                  value={link.value}
+                  icon={<i className={`${iconsArray[index]} fs-3`} />}
                 />
               );
             }
 
             return (
               <SideBarLink
-                href={"/dashboard"}
-                className="side-bar-link d-flex flex-column justify-content-center align-items-center text-light rounded-2 tr-02"
-                textClass="side-bar-link-value fs-xs fw-semibold"
-                text={link.value}
+                key={index}
+                activeHref={activeLink}
+                onClick={() => setCurrentLink(link.href)}
+                href={link.href}
+                value={link.value}
                 icon={
-                  <NotificationBadge
-                    iconClass={`${iconsArray[index]} position-relative fs-3`}
-                    notifications={5}
-                  />
+                  <i className={`${iconsArray[index]} fs-3 position-relative`}>
+                    <NotificationBadge
+                      className="position-absolute bg-danger rounded-circle icon-badge fs-xs fw-semibold"
+                      notifications={5}
+                    />
+                  </i>
                 }
               />
             );
           })}
         </Navbar>
-        <Button className="btn-fill mt-auto mb-4 mx-auto text-light fw-semibold rounded-2">
-          Sign out
-        </Button>
+        <PrimaryButton
+          className="fw-bold px-2 rounded-2 bg-default btn-h-primary border-0 tr-02 mx-auto mx-md-0 mt-auto mt-md-0"
+          textValue="Sign out"
+          type="button"
+          onClick={() => {
+            console.log("Button clicked");
+          }}
+        />
       </Navbar.Offcanvas>
     </Navbar>
   );
 };
+// icon-badge

@@ -1,0 +1,24 @@
+.custom-floating-group {
+  position: relative;
+  display: flex;
+  border: solid var(--brc-gray) 1px;
+}
+.custom-floating-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.custom-floating-input {
+  font-size: var(--fs-sm);
+  outline: none;
+}
+.custom-floating-group:focus-within {
+  border-color: var(--color-default);
+}
+.custom-floating-group input:focus ~ label,
+.custom-floating-group input:valid ~ label {
+  top: 0;
+  font-size: var(--fs-xs) !important;
+  color: var(--fc-gray) !important;
+}

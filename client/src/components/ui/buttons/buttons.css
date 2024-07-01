@@ -1,0 +1,6 @@
+.btn-h-primary:hover {
+  filter: brightness(80%) !important;
+}
+.btn-h-fill-gray:hover {
+  background-color: rgba(128, 128, 128, 0.116) !important;
+}

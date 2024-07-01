@@ -1,0 +1,20 @@
+input {
+  outline: none;
+}
+label::after {
+  background-color: transparent !important;
+}
+.custom-input-focus:focus {
+  border-color: var(--brc-default) !important;
+}
+input:autofill,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* if field is autocompleded it takes 5000s to change it color */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #23232329;
+}

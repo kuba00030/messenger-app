@@ -1,3 +1,5 @@
+import "../inputs.css";
+import "./input-floating-label.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { InvalidIcon } from "../../errors/InvalidIcon";
 import { PasswordVisbilityToggle } from "../../buttons/show-buttons/PasswordVisibilityToggle";
@@ -8,7 +10,7 @@ export type FloatingLabel = {
   id: string;
   containerClass?: string;
   inputClass?: string;
-  inputType: string;
+  inputType: "text" | "password";
   labelClass?: string;
   labelVal: string;
   error: string | undefined;
@@ -41,12 +43,18 @@ export const InputFloatingLabel = forwardRef<HTMLInputElement, FloatingLabel>(
         }
       >
         <div
-          className={`custom-floating-group align-items-center ${containerClass}`}
+          className={`custom-floating-group align-items-center ${
+            containerClass ? containerClass : "rounded-2 m-0"
+          }`}
         >
           <input
             id={id}
             type={showPassword.inputType}
-            className={`custom-floating-input border-0 ${inputClass}`}
+            className={`custom-floating-input border-0 ${
+              inputClass
+                ? inputClass
+                : "custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 text-light fw-bold"
+            }`}
             autoComplete="new-password"
             required
             ref={ref}
@@ -59,8 +67,15 @@ export const InputFloatingLabel = forwardRef<HTMLInputElement, FloatingLabel>(
             />
           )}
           {error && <InvalidIcon className={`text-danger me-2`} />}
-          <label htmlFor={id} className={`custom-floating-label ${labelClass}`}>
-            {labelVal}
+          <label
+            htmlFor={id}
+            className={`custom-floating-label ${
+              labelClass
+                ? labelClass
+                : "mx-2 bg-dark fs-sm text-light fw-bold tr-02"
+            }`}
+          >
+            {labelVal ? labelVal : "Label"}
           </label>
         </div>
       </OverlayTrigger>

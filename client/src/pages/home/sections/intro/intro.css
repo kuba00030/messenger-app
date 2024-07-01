@@ -1,0 +1,10 @@
+.home-img {
+  width: clamp(250px, 25vw, 650px);
+  height: clamp(270px, 25vw, 600px);
+  box-shadow: -40px 40px 40px -5px rgba(80, 82, 109, 1);
+}
+@media only screen and (max-width: 720px) {
+  .home-img {
+    display: none;
+  }
+}

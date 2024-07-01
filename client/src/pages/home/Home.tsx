@@ -1,6 +1,7 @@
-import { About } from "./sections/About";
-import { Intro } from "./sections/Intro";
-import { Product } from "./sections/Product";
+import "./home.css";
+import { About } from "./sections/about/About";
+import { Intro } from "./sections/intro/Intro";
+import { Product } from "./sections/product/Product";
 
 export const Home = () => {
   return (

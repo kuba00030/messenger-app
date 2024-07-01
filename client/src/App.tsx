@@ -1,11 +1,14 @@
-import { UserContextProvider } from "./context/userContext/userContext";
-import { Router } from "./router/Router";
-import "./styles/global.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Router } from "./router/Router";
+import { NavbarContextProvider } from "./context/navbar/navbarContext";
+import { UserContextProvider } from "./context/userContext/userContext";
+import "./styles/global.css";
 function App() {
   return (
     <UserContextProvider>
-      <Router />
+      <NavbarContextProvider>
+        <Router />
+      </NavbarContextProvider>
     </UserContextProvider>
   );
 }

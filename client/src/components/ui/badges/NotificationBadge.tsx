@@ -1,21 +1,19 @@
+import { Badge } from "react-bootstrap";
+
 type NotificationBadge = {
-  iconClass: string;
-  notifications?: number;
+  notifications: number | string;
+  className?: string;
 };
 
 export const NotificationBadge = ({
-  iconClass,
   notifications,
+  className,
 }: NotificationBadge) => {
   return (
-    <i className={iconClass}>
-      {notifications && (
-        <div
-          className={`bg-danger icon-badge d-flex align-items-center justify-content-center fs-xs`}
-        >
-          {notifications}
-        </div>
-      )}
-    </i>
+    <Badge
+      className={`d-flex justify-content-center align-items-center ${className}`}
+    >
+      {notifications}
+    </Badge>
   );
 };

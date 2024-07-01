@@ -1,0 +1,36 @@
+.new-friends-list {
+  /* background-color: #2c333a; */
+  width: 50%;
+}
+.searchbar-container {
+  transition: var(--tr-02);
+  box-shadow: var(--bx-sm);
+}
+.searchbar-container:hover {
+  box-shadow: var(--bx-m);
+}
+.searchbar-container:focus-within {
+  box-shadow: var(--bx-m);
+}
+.friends-list-item {
+  box-shadow: var(--bx-sm);
+}
+.friends-list-item:hover {
+  box-shadow: var(--bx-m);
+}
+
+@media only screen and (max-width: 1199px) {
+  .new-friends-list {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+  .new-friends-list {
+    width: 75%;
+  }
+}
+@media only screen and (min-width: 576px) {
+  .friends-list-item:hover {
+    transform: scaleX(1.05);
+  }
+}

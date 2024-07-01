@@ -1,0 +1,25 @@
+.auth-container {
+  padding: 60px;
+  width: clamp(25vw, 50vw, 500px);
+}
+.inner-text-link {
+  color: var(--fc-green-default) !important;
+}
+.inner-text-link:hover {
+  filter: brightness(80%);
+}
+@media only screen and (max-width: 575px) {
+  .form-container {
+    background-color: #212529 !important;
+  }
+  .auth-container {
+    width: 100%;
+    align-self: stretch;
+  }
+}
+@media only screen and (min-width: 576px) {
+  .auth-container {
+    border-radius: 1rem;
+    box-shadow: -40px 40px 40px -5px rgba(80, 82, 109, 1);
+  }
+}

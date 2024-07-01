@@ -1,13 +1,13 @@
 import { AuthForm } from "../../../components/forms/auth-forms/AuthForm";
 import { Link } from "react-router-dom";
 import { SubmitButton } from "../../../components/ui/buttons/submit-buttons/SubmitButton";
-import { useNavigateTo } from "../../../hooks/navigate/useNavigateTo";
 import { InputFloatingLabel } from "../../../components/ui/inputs/floating-labels/InputFloatingLabel";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { emailValidation } from "../../../utils/form/validation/input-validation/inputValidation";
 import { FormFields } from "../../../utils/form/validation/signUpValidation";
+import { useNavbarContext } from "../../../context/navbar/navbarContext";
 
 type Fields = z.infer<typeof emailValidation>;
 
@@ -16,7 +16,7 @@ const formFields: FormFields = [
 ];
 
 export const ForgetPassowrd = () => {
-  const { navigateTo } = useNavigateTo();
+  const { setCurrentLink } = useNavbarContext();
   const {
     register,
     formState: { errors },
@@ -50,7 +50,7 @@ export const ForgetPassowrd = () => {
               <InputFloatingLabel
                 key={field.name}
                 id={field.name}
-                inputType={field.type}
+                inputType={field.type == "text" ? field.type : "password"}
                 labelVal={field.label}
                 error={errors[field.name as keyof Fields]?.message}
                 inputClass="custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 text-light fw-bold"
@@ -61,11 +61,16 @@ export const ForgetPassowrd = () => {
           })}
           <div className="d-flex flex-column gap-2">
             <SubmitButton
-              buttonClass="btn-fill fw-bold m-0"
-              value="Send code"
+              textValue="Send code"
               onClick={handleSubmit(submit)}
             />
-            <Link to={"/sign_in"}>Back to sign in</Link>
+            <Link
+              to={"/sign-in"}
+              className="fw-bold inner-text-link tr-02"
+              onClick={() => setCurrentLink("/sign-in")}
+            >
+              Back to sign in
+            </Link>
           </div>
         </>
       }

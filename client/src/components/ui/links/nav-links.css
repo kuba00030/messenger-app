@@ -1,0 +1,6 @@
+.nav-link-h-empty:hover {
+  background-color: transparent !important;
+}
+.nav-link-h-fill:hover {
+  background-color: var(--color-default) !important;
+}
