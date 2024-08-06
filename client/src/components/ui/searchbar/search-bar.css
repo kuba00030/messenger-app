@@ -1,0 +1,10 @@
+.searchbar-container {
+  transition: var(--tr-02);
+  box-shadow: var(--bx-sm);
+}
+.searchbar-container:hover {
+  box-shadow: var(--bx-m);
+}
+.searchbar-container:focus-within {
+  box-shadow: var(--bx-m);
+}

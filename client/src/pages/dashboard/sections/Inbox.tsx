@@ -1,6 +1,5 @@
 import { Searchbar } from "../../../components/ui/searchbar/Searchbar";
 import "../../../styles/pages/dashboard/inbox/inbox.css";
-import { Button } from "react-bootstrap";
 import { useNavbarContext } from "../../../context/navbar/navbarContext";
 import { IconButton } from "../../../components/ui/buttons/icon-button/IconButton";
 import { Conversation } from "../../../components/ui/inbox/conversation-list/Conversation";
@@ -9,6 +8,7 @@ import { ChatMessage } from "../../../components/ui/inbox/chat-window/ChatMessag
 import { useChatInput } from "../../../hooks/chat/useChatInput";
 import { useWindowWidth } from "../../../hooks/window/useWindowWidth";
 import { useCalculateInputLines } from "../../../hooks/styles/dimensions/calculate/useCalculateInputLines";
+import { PrimaryButton } from "../../../components/ui/buttons/primary-button/PrimaryButton";
 
 export const Inbox = () => {
   const { isFocused, setIsFocused, newMessage, inputRef } = useChatInput();
@@ -32,26 +32,16 @@ export const Inbox = () => {
         <IconButton
           button={{
             className:
-              "d-md-none border-gray shadow-none mx-auto mb-4 text-light fs-xl my-btn-normal",
+              "d-md-none bg-default border-0 border-gray shadow-none mx-auto mb-4 text-light fs-xl my-btn-normal",
             onClick: () => setIsOpened(!isOpened),
           }}
           icon="bi bi-list"
         />
         <Searchbar
-          container={{
-            className:
-              "d-flex flex-row p-2 rounded-2 searchbar-container bg-white",
-          }}
-          searchIcon={{
-            className:
-              "bg-transparent border-0 text-secondary shadow-none fs-sm",
-          }}
-          input={{
-            className:
-              "px-2 text-secondary bg-transparent fs-sm fw-semibold border-0 w-100",
-            placeholder: "Search for the user",
-            onChange: () => console.log("a"),
-          }}
+          containerClass="d-flex flex-row p-2 rounded-2 searchbar-container bg-white"
+          iconClass="bg-transparent border-0 text-secondary shadow-none fs-sm"
+          inputClass="px-2 text-secondary bg-transparent fs-sm fw-semibold border-0 w-100"
+          onChange={() => console.log("a")}
         />
         {/* select sorting messages method */}
         <div className="d-flex flex-column flex-xl-row align-items-xl-center mt-4">
@@ -60,9 +50,14 @@ export const Inbox = () => {
             <option className="fw-semibold fs-sm">Latest</option>
             <option className="fw-semibold fs-sm">Oldest</option>
           </select>
-          <Button className="rounded-2 border-0 shadow-none ms-xl-auto fs-sm p-2 text-light fw-semibold my-btn-normal">
-            Add new
-          </Button>
+          <PrimaryButton
+            className="ms-auto fs-sm fw-bold px-2 rounded-2 bg-default btn-h-primary border-0 tr-02"
+            type="button"
+            textValue="Add new"
+            onClick={() => {
+              console.log("Add new conv");
+            }}
+          />
         </div>
         {/* list of conversations*/}
         <Conversation />
@@ -70,6 +65,7 @@ export const Inbox = () => {
       {/* chat window */}
       <div className="d-flex flex-column border-start border-end border-gray w-75">
         <ChatHeader />
+        {/* messages */}
         <div className="d-flex flex-column flex-fill overflow-auto py-4 px-2 px-sm-4 gap-4">
           {exampleMsgs.map((message, index) => (
             <ChatMessage
@@ -86,6 +82,7 @@ export const Inbox = () => {
         </div>
         <div className="d-flex flex-row py-4 gap-2 px-4">
           <div
+            // klasa do zmiany z d-none na width=0 + czas animacji
             className={`d-flex flex-row mt-auto ${
               windowWidth < 992 && (newMessage || isFocused ? "d-none" : "")
             } `}
@@ -117,7 +114,7 @@ export const Inbox = () => {
               inputLines !== 1 ? "2" : "pill"
             } bg-dark px-4 py-2 chat-input text-light flex-fill`}
             style={{ outline: "none", maxHeight: "3lh", minWidth: "50px" }}
-            role="text-box"
+            role=""
             contentEditable
             ref={inputRef}
             onFocus={() => {
@@ -130,7 +127,7 @@ export const Inbox = () => {
           <IconButton
             button={{
               className:
-                "d-flex justify-content-center align-items-center mt-auto fs-m border-0 rounded-circle my-btn-normal overflow-hidden text-light send-btn tr-02 shadow-none",
+                "d-flex justify-content-center align-items-center bg-default mt-auto fs-m border-0 rounded-circle my-btn-normal overflow-hidden text-light send-btn tr-02 shadow-none",
             }}
             icon="bi bi-send"
           />

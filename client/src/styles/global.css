@@ -92,6 +92,10 @@ li {
 .flex-wrap {
   flex-wrap: wrap;
 }
+/* overflow */
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
 /* width */
 @media only screen and (max-width: 576px) {
   .w-sm-auto {
