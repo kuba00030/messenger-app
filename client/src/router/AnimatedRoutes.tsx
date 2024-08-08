@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 
 import { Dashboard } from "../pages/dashboard/Dashboard";
 import { Default } from "../pages/Default";
@@ -15,26 +15,26 @@ import { SignUp } from "../pages/auth/sign-up/SignUp";
 export const AnimatedRoutes = () => {
   const location = useLocation();
   const { user } = useUserContext();
-
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Default />}>
-          <Route index element={<Home />} />
-          <Route path="sign-in">
-            <Route index element={<SignIn />} />
-            <Route path="forget-password">
-              <Route index element={<ForgetPassowrd />} />
-            </Route>
-          </Route>
-          <Route path="sign-up" element={<SignUp />} />
-        </Route>
-
-        {user && (
-          <Route path="dashboard" element={<Dashboard />}>
+        {user ? (
+          <Route path="/" element={<Dashboard />}>
+            <Route index element={<Navigate to="inbox" />} />
             <Route path="inbox" element={<Inbox />} />
             <Route path="add-friend" element={<AddFriend />} />
             <Route path="notifications" element={<Notifications />} />
+          </Route>
+        ) : (
+          <Route path="/" element={<Default />}>
+            <Route index element={<Home />} />
+            <Route path="sign-in">
+              <Route index element={<SignIn />} />
+              <Route path="forget-password">
+                <Route index element={<ForgetPassowrd />} />
+              </Route>
+            </Route>
+            <Route path="sign-up" element={<SignUp />} />
           </Route>
         )}
       </Routes>

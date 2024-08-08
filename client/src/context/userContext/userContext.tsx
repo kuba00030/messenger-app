@@ -22,7 +22,7 @@ export const UserContext = createContext<UserContext | null>(null);
 export const UserContextProvider = ({ children }: ContextProviderProps) => {
   const { getItem } = useLocalStorage("user");
   const [user] = useState<User | null>({
-    id: "aaa",
+    id: "1111",
     name: "bbb",
     lastName: "ccc",
     email: "aaa@ccc.pl",
