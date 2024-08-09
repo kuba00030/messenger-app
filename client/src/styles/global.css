@@ -1,25 +1,30 @@
 :root {
   /* font size */
+  --fs-xxs: 10px;
   --fs-xs: clamp(12px, 1vw, 14px);
-  --fs-sm: clamp(14px, 2vw, 16px);
+  --fs-sm: 15px;
   --fs-m: clamp(16px, 2vw, 20px);
   --fs-l: clamp(20px, 2vw, 26px);
   --fs-xl: clamp(22px, 2vw, 34px);
   --fs-xxl: clamp(24px, 3vw, 51px);
   /* font color */
-  --fc-dark: #212529 !important;
-  --fc-gray: #9fa6b2 !important ;
-  --fc-green-default: rgb(89, 179, 149) !important;
+  --fc-dark: #212529;
+  --fc-gray: #9fa6b2;
+  --fc-green-default: rgb(89, 179, 149);
   /* background color */
-  --color-default: rgb(89, 179, 149) !important;
+  --color-default: rgb(89, 179, 149);
+  --bg-gray: rgb(51, 58, 66);
   /* border colors */
-  --brc-gray: rgba(128, 128, 128, 0.486) !important;
-  --brc-default: rgb(89, 179, 149) !important;
+  --brc-gray: rgba(128, 128, 128, 0.486);
+  --brc-default: rgb(89, 179, 149);
   /* box-shadow */
-  --bx-sm: 4px 4px 12px 0px rgba(214, 214, 214, 1) !important;
-  --bx-m: 10px 10px 24px 0px rgba(214, 214, 214, 1) !important;
+  --bx-sm: 4px 4px 12px 0px rgba(214, 214, 214, 1);
+  --bx-m: 10px 10px 24px 0px rgba(214, 214, 214, 1);
   /* transition time */
-  --tr-02: 0.2s ease-in-out !important;
+  --tr-02: 0.2s ease-in-out;
+}
+html {
+  margin-left: calc(100vw - 100%);
 }
 ul {
   padding: 0px !important;
@@ -27,17 +32,17 @@ ul {
   list-style: none;
 }
 li {
-  padding: 0px;
-  margin: 0px;
-}
-.my-overflow-x-hidden {
-  overflow-x: hidden !important;
+  padding: 0px !important;
+  margin: 0px !important;
 }
 /* transition time */
 .tr-02 {
   transition: var(--tr-02) !important;
 }
 /* font size */
+.fs-xxs {
+  font-size: var(--fs-xxs) !important;
+}
 .fs-xs {
   font-size: var(--fs-xs) !important;
 }
@@ -60,9 +65,12 @@ li {
 .bg-default {
   background-color: var(--color-default) !important;
 }
+.bg-gray {
+  background-color: var(--bg-gray) !important;
+}
 /* font color */
 .fc-green-default {
-  color: var(--fc-green-default);
+  color: var(--fc-green-default) !important;
 }
 /* border */
 .b-1 {
@@ -81,20 +89,26 @@ li {
 }
 /* imgs */
 .avatar-img {
-  height: 90px;
-  width: 90px;
+  height: 48px;
+  width: 48px;
 }
 .avatar-img-sm {
-  height: 58px;
-  width: 58px;
+  height: 40px;
+  width: 40px;
 }
 /* flex */
 .flex-wrap {
   flex-wrap: wrap;
 }
 /* overflow */
-.overflow-y-auto {
+.my-overflow-y-auto {
   overflow-y: auto !important;
+}
+.my-overflow-x-visible {
+  overflow-x: visible !important;
+}
+.my-overflow-x-hidden {
+  overflow-x: hidden !important;
 }
 /* width */
 @media only screen and (max-width: 576px) {

@@ -13,7 +13,6 @@
 .break {
   word-break: break-all;
 }
-
 .chat-input {
   box-shadow: var(--bx-sm);
 }

@@ -13,7 +13,7 @@ export const NotificationBadge = ({
     <Badge
       className={`d-flex justify-content-center align-items-center ${className}`}
     >
-      {notifications}
+      <span>{notifications}</span>
     </Badge>
   );
 };

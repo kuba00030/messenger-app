@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap";
 import "../buttons.css";
 
 export type PrimaryButton = {
-  onClick: () => void;
+  onClick: (e?: any) => void;
   type: "submit" | "button" | "reset";
   className?: string;
   textValue: string;
@@ -18,7 +18,7 @@ export const PrimaryButton = ({
     className={
       className
         ? className
-        : "fs-sm fw-bold px-2 rounded-2 bg-default btn-h-primary border-0 tr-02"
+        : "fs-sm px-2 rounded-2 bg-default btn-h-primary border-0 tr-02 text-light"
     }
     onClick={onClick}
     type={type ? type : "button"}

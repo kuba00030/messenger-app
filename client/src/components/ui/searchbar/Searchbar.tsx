@@ -26,7 +26,7 @@ export const Searchbar = ({
       className={
         inputClass
           ? inputClass
-          : "d-flex flex-fill border-0 text-secondary shadow-none fs-sm fw-semibold"
+          : "w-100 border-0 text-secondary shadow-none fs-sm fw-semibold"
       }
       onChange={onChange}
     />

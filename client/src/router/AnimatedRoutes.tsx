@@ -7,7 +7,6 @@ import { AnimatePresence } from "framer-motion";
 import { ForgetPassowrd } from "../pages/auth/forget-password/ForgetPassword";
 import { useUserContext } from "../context/userContext/userContext";
 import { Inbox } from "../pages/dashboard/sections/Inbox";
-import { AddFriend } from "../pages/dashboard/sections/AddFriend";
 import { Notifications } from "../pages/dashboard/sections/Notifications";
 import { SignIn } from "../pages/auth/sign-in/SignIn";
 import { SignUp } from "../pages/auth/sign-up/SignUp";
@@ -22,7 +21,8 @@ export const AnimatedRoutes = () => {
           <Route path="/" element={<Dashboard />}>
             <Route index element={<Navigate to="inbox" />} />
             <Route path="inbox" element={<Inbox />} />
-            <Route path="add-friend" element={<AddFriend />} />
+            <Route path="contacts" element={<Inbox />} />
+            <Route path="calls" element={<Inbox />} />
             <Route path="notifications" element={<Notifications />} />
           </Route>
         ) : (
