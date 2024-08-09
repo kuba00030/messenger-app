@@ -18,7 +18,7 @@ export const SideBarLink = ({
 }: SideBarLink) => {
   const { activeLink } = useNavbarContext();
   return (
-    <Nav.Item className="my-4">
+    <Nav.Item className="my-0 my-md-4">
       <HashLink
         smooth
         className={
@@ -26,8 +26,8 @@ export const SideBarLink = ({
             ? `${activeLink.includes(href) ? activeClass : className}`
             : `${
                 activeLink.includes(href)
-                  ? "px-4 side-bar-link side-bar-link-active d-flex flex-column justify-content-center align-items-center rounded-2 tr-02"
-                  : "px-4 side-bar-link d-flex flex-column justify-content-center align-items-center rounded-2 tr-02"
+                  ? "py-2 py-md-0 mx-md-0 px-md-4 side-bar-link side-bar-link-active d-flex flex-column justify-content-center align-items-center rounded-2 tr-02"
+                  : "py-2 py-md-0 mx-md-0 px-md-4 side-bar-link d-flex flex-column justify-content-center align-items-center rounded-2 tr-02"
               }`
         }
         style={{

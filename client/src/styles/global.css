@@ -87,15 +87,6 @@ li {
   filter: opacity(0.5);
   background-color: rgba(255, 255, 255, 0.178);
 }
-/* imgs */
-.avatar-img {
-  height: 48px;
-  width: 48px;
-}
-.avatar-img-sm {
-  height: 40px;
-  width: 40px;
-}
 /* flex */
 .flex-wrap {
   flex-wrap: wrap;
