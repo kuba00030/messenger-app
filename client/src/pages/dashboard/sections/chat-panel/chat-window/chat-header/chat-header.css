@@ -1,0 +1,7 @@
+.chat-header-back-button {
+  background-color: var(--color-default) !important;
+}
+.chat-header-back-button:focus,
+.chat-header-back-button:hover {
+  background-color: var(--bg-default-darker) !important;
+}

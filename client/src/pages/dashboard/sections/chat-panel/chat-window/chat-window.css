@@ -1,0 +1,21 @@
+.chat-window-btn:hover,
+.chat-window-btn:focus {
+  color: var(--bg-default-darker) !important;
+}
+.chat-window-send-btn:hover,
+.chat-window-send-btn:focus {
+  background-color: var(--bg-default-darker) !important;
+}
+@media only screen and (max-width: 767px) {
+  .chat-window {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  .chat-window-opened {
+    transform: translateX(0%);
+  }
+  .chat-window-closed {
+    transform: translateX(100%);
+  }
+}

@@ -1,6 +1,6 @@
 import "./intro.css";
-import { PrimaryButton } from "../../../../components/ui/buttons/primary-button/PrimaryButton";
-import { Section } from "../../../../components/ui/section/Section";
+import { Section } from "../../../../components/section/Section";
+import { PrimaryButton } from "../../../../components/ui/buttons/Buttons";
 
 export const Intro = () => {
   return (

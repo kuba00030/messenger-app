@@ -2,9 +2,9 @@ import "../inputs.css";
 import "./input-floating-label.css";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { InvalidIcon } from "../../errors/InvalidIcon";
-import { PasswordVisbilityToggle } from "../../buttons/show-buttons/PasswordVisibilityToggle";
 import { useShowPassword } from "../../../../hooks/form/password-field/useShowPassword";
 import { forwardRef } from "react";
+import { PasswordVisbilityToggle } from "../../buttons/Buttons";
 
 export type FloatingLabel = {
   id: string;
@@ -36,7 +36,7 @@ export const InputFloatingLabel = forwardRef<HTMLInputElement, FloatingLabel>(
         placement="top"
         overlay={
           error !== undefined ? (
-            <Tooltip className="text-light">{error}</Tooltip>
+            <Tooltip className="fc-my-white">{error}</Tooltip>
           ) : (
             <></>
           )
@@ -53,7 +53,7 @@ export const InputFloatingLabel = forwardRef<HTMLInputElement, FloatingLabel>(
             className={`custom-floating-input border-0 ${
               inputClass
                 ? inputClass
-                : "custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 text-light fw-bold"
+                : "custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 fc-my-white fw-bold"
             }`}
             autoComplete="new-password"
             required
@@ -72,7 +72,7 @@ export const InputFloatingLabel = forwardRef<HTMLInputElement, FloatingLabel>(
             className={`custom-floating-label ${
               labelClass
                 ? labelClass
-                : "mx-2 bg-dark fs-sm text-light fw-bold tr-02"
+                : "mx-2 bg-dark fs-sm fc-my-white fw-bold tr-02"
             }`}
           >
             {labelVal ? labelVal : "Label"}

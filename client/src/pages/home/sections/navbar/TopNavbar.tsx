@@ -2,10 +2,10 @@ import { Offcanvas } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "../../../../components/ui/links/nav-bar/NavLink";
-import { useNavbarContext } from "../../../../context/navbar/navbarContext";
-import { useOpenOnScroll } from "../../../../hooks/open-element/open-on-scroll/useOpenOnScroll";
 import { queryElementById } from "../../../../utils/get-element/queryElementById";
 import { useGetHeightOnResize } from "../../../../hooks/styles/dimensions/get-height/useGetHeightOnResize";
+import { useOpenOnScroll } from "../../../../hooks/scrollbar/useOpenOnScroll";
+import { useNavbarContext } from "../../../../context/navbar/NavbarContext";
 
 export const TopNavbar = () => {
   const { isOpened } = useOpenOnScroll(true);
@@ -34,7 +34,7 @@ export const TopNavbar = () => {
           closeButton
           closeVariant="white"
           aria-controls="main-mobile-menu"
-          className="me-auto ms-4 p-0 text-light"
+          className="me-auto ms-4 p-0 fc-my-white"
         ></Offcanvas.Header>
 
         <Nav className="d-flex justify-content-end mx-auto mx-sm-0">
@@ -52,8 +52,8 @@ export const TopNavbar = () => {
                 key={`nav-link-${link.value}`}
                 onClick={() => setCurrentLink(link.href)}
                 activeHref={activeLink}
-                className="fw-semibold fs-sm nav-link-h-fill text-light p-3 p-md-4 tr-02"
-                activeClass="fw-semibold fs-sm bg-default nav-link-h-empty text-light p-3 p-md-4 tr-02"
+                className="fw-semibold fs-sm nav-link-h-fill fc-my-white p-3 p-md-4 tr-02"
+                activeClass="fw-semibold fs-sm bg-default nav-link-h-empty fc-my-white p-3 p-md-4 tr-02"
                 href={link.href}
                 value={link.value}
               />

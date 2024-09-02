@@ -2,7 +2,7 @@ import { Nav } from "react-bootstrap";
 import { HashLink } from "react-router-hash-link";
 import "../nav-links.css";
 
-export type NavLink = {
+export type TNavLink = {
   href: string;
   activeHref: string;
   value: string;
@@ -18,7 +18,7 @@ export const NavLink = ({
   href,
   activeHref,
   onClick,
-}: NavLink) => {
+}: TNavLink) => {
   return (
     <Nav.Item className="d-flex p-0">
       <HashLink
@@ -28,8 +28,8 @@ export const NavLink = ({
             ? `${activeHref.includes(href) ? activeClass : className}`
             : `${
                 activeHref.includes(href)
-                  ? "fw-semibold fs-sm bg-dark nav-link-h-fill text-light text-center p-3 p-md-4 m-auto tr-02"
-                  : "fw-semibold fs-sm bg-default nav-link-h-empty text-light text-center p-3 p-md-4 m-auto tr-02"
+                  ? "fw-semibold fs-sm bg-dark nav-link-h-fill fc-my-white text-center p-3 p-md-4 m-auto tr-02"
+                  : "fw-semibold fs-sm bg-default nav-link-h-empty fc-my-white text-center p-3 p-md-4 m-auto tr-02"
               }`
         }
         onClick={onClick}

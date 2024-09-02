@@ -1,0 +1,4 @@
+.chat-list-item-active,
+.chat-list-item-h:hover {
+  background-color: var(--color-default) !important;
+}

@@ -1,5 +1,3 @@
-import "./search-bar.css";
-
 type Searchbar = {
   containerClass?: string;
   iconClass?: string;
@@ -12,23 +10,30 @@ export const Searchbar = ({
   iconClass,
   inputClass,
   onChange,
-}: Searchbar) => (
-  <div
-    className={
-      containerClass
-        ? containerClass
-        : "d-flex flex-row gap-2 p-2 rounded-2 mx-4 mx-xl-0 searchbar-container bg-white"
-    }
-  >
-    <i className={`bi bi-search ${iconClass ? iconClass : "fs-sm"}`} />
-
-    <input
+}: Searchbar) => {
+  return (
+    <div
       className={
-        inputClass
-          ? inputClass
-          : "w-100 border-0 text-secondary shadow-none fs-sm fw-semibold"
+        containerClass
+          ? containerClass
+          : "d-flex flex-fill flex-row-reverse mx-4 p-2 rounded-2 bg-my-gray"
       }
-      onChange={onChange}
-    />
-  </div>
-);
+    >
+      <i
+        className={`bi bi-search ${
+          iconClass ? iconClass : "border-0 fc-my-gray shadow-none fs-sm"
+        }`}
+      />
+
+      <input
+        className={
+          inputClass
+            ? inputClass
+            : "px-2 fc-my-gray bg-transparent fs-sm fw-semibold border-0 w-100"
+        }
+        placeholder="Search here..."
+        onChange={onChange}
+      />
+    </div>
+  );
+};

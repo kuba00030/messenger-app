@@ -17,8 +17,8 @@ import { TransitionContainer } from "../../../components/transition/container/Tr
 import { FileInput } from "../../../components/ui/inputs/file-input/FileInput";
 import { InputFloatingLabel } from "../../../components/ui/inputs/floating-labels/InputFloatingLabel";
 import { AuthForm } from "../../../components/forms/auth-forms/AuthForm";
-import { PrimaryButton } from "../../../components/ui/buttons/primary-button/PrimaryButton";
-import { useNavbarContext } from "../../../context/navbar/navbarContext";
+import { PrimaryButton } from "../../../components/ui/buttons/Buttons";
+import { useNavbarContext } from "../../../context/navbar/NavbarContext";
 
 const formSteps: FormFields[] = [
   [
@@ -121,10 +121,10 @@ export const SignUp = () => {
       <AuthForm
         formBody={
           <>
-            <span className="fs-l fw-semibold m-0 p-0 text-light">
+            <span className="fs-l fw-semibold m-0 p-0 fc-my-white">
               Welcome to <span className="fc-green-default">Lorem</span>
             </span>
-            <span className="fs-xl fw-semibold m-0 p-0 text-light">
+            <span className="fs-xl fw-semibold m-0 p-0 fc-my-white">
               Sign up
             </span>
             {currStep === 0 && renderFormStep(formSteps[0])}

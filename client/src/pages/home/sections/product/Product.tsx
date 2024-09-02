@@ -1,4 +1,4 @@
-import { Section } from "../../../../components/ui/section/Section";
+import { Section } from "../../../../components/section/Section";
 import "./product.css";
 
 export const Product = () => {

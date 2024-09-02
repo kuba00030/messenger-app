@@ -1,10 +1,10 @@
-import { Section } from "../../../../components/ui/section/Section";
+import { Section } from "../../../../components/section/Section";
 import "./about.css";
 
 export const About = () => {
   return (
     <Section id="about" className="bg-dark row text-center py-4 m-0">
-      <article className="text-light fw-semibold fs-sm col-12 col-md-6">
+      <article className="fc-my-white fw-semibold fs-sm col-12 col-md-6">
         <p> ABOUT US</p>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi magnam
@@ -13,7 +13,7 @@ export const About = () => {
           possimus nisi libero?
         </p>
       </article>
-      <article className="text-light fw-semibold fs-sm col-12 col-md-3">
+      <article className="fc-my-white fw-semibold fs-sm col-12 col-md-3">
         <p>CONTACT</p>
         <ul>
           <li>example email</li>
@@ -21,7 +21,7 @@ export const About = () => {
           <li>example address</li>
         </ul>
       </article>
-      <article className="text-light fw-semibold fs-sm col-12 col-md-3 p-0">
+      <article className="fc-my-white fw-semibold fs-sm col-12 col-md-3 p-0">
         <p>SOCIAL</p>
         <ul>
           <li>social</li>

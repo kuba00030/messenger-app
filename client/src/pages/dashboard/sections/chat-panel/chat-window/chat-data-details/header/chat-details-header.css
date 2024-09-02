@@ -1,0 +1,12 @@
+.chat-details-header-avatar {
+  height: 250px;
+  width: 100%;
+}
+.chat-details-header-button {
+  position: absolute;
+  left: 0;
+}
+.chat-details-header-data {
+  position: absolute;
+  bottom: 0;
+}

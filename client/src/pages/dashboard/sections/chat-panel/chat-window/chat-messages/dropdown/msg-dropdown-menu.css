@@ -1,0 +1,12 @@
+.my-msg-dropdown-toggle {
+  opacity: 0;
+}
+.my-msg-dropdown-toggle:hover,
+.my-msg-dropdown-toggle:focus {
+  color: var(--fc-gray);
+}
+.chat-window-message-container:hover .my-msg-dropdown-toggle,
+.chat-window-message-container:focus .my-msg-dropdown-toggle,
+.my-msg-dropdown-toggle:focus {
+  opacity: 1;
+}

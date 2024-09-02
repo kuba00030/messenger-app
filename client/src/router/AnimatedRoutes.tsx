@@ -1,15 +1,16 @@
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
-
 import { Dashboard } from "../pages/dashboard/Dashboard";
 import { Default } from "../pages/Default";
 import { Home } from "../pages/home/Home";
 import { AnimatePresence } from "framer-motion";
 import { ForgetPassowrd } from "../pages/auth/forget-password/ForgetPassword";
-import { useUserContext } from "../context/userContext/userContext";
-import { Inbox } from "../pages/dashboard/sections/Inbox";
-import { Notifications } from "../pages/dashboard/sections/Notifications";
+import { useUserContext } from "../context/user/UserContext";
+import { Notifications } from "../pages/dashboard/sections/notifications/Notifications";
 import { SignIn } from "../pages/auth/sign-in/SignIn";
 import { SignUp } from "../pages/auth/sign-up/SignUp";
+import { Contacts } from "../pages/dashboard/sections/contacts/Contacts";
+import { Calls } from "../pages/dashboard/sections/calls/Calls";
+import { ChatPanel } from "../pages/dashboard/sections/chat-panel/ChatPanel";
 
 export const AnimatedRoutes = () => {
   const location = useLocation();
@@ -20,9 +21,9 @@ export const AnimatedRoutes = () => {
         {user ? (
           <Route path="/" element={<Dashboard />}>
             <Route index element={<Navigate to="inbox" />} />
-            <Route path="inbox" element={<Inbox />} />
-            <Route path="contacts" element={<Inbox />} />
-            <Route path="calls" element={<Inbox />} />
+            <Route path="inbox" element={<ChatPanel />} />
+            <Route path="contacts" element={<Contacts />} />
+            <Route path="calls" element={<Calls />} />
             <Route path="notifications" element={<Notifications />} />
           </Route>
         ) : (

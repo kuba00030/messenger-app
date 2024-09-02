@@ -10,8 +10,8 @@ import { FormFields } from "../../../utils/form/validation/signUpValidation";
 import { AuthForm } from "../../../components/forms/auth-forms/AuthForm";
 import { TransitionContainer } from "../../../components/transition/container/TransitionContainer";
 import { InputFloatingLabel } from "../../../components/ui/inputs/floating-labels/InputFloatingLabel";
-import { SubmitButton } from "../../../components/ui/buttons/submit-buttons/SubmitButton";
-import { useNavbarContext } from "../../../context/navbar/navbarContext";
+import { SubmitButton } from "../../../components/ui/buttons/Buttons";
+import { useNavbarContext } from "../../../context/navbar/NavbarContext";
 
 export const SignIn = () => {
   const { setCurrentLink } = useNavbarContext();
@@ -40,7 +40,7 @@ export const SignIn = () => {
       <AuthForm
         formBody={
           <>
-            <span className="fs-l fw-semibold m-0 p-0 text-light">
+            <span className="fs-l fw-semibold m-0 p-0 fc-my-white">
               Welcome back to <span className="fc-green-default">Lorem</span>
             </span>
 
@@ -65,9 +65,9 @@ export const SignIn = () => {
                     key={field.name}
                     id={field.name}
                     containerClass="rounded-2"
-                    inputClass="custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 text-light fw-bold"
+                    inputClass="custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 fc-my-white fw-bold"
                     inputType={field.type === "text" ? field.type : "password"}
-                    labelClass="mx-2 bg-dark fs-sm text-light fw-bold tr-02"
+                    labelClass="mx-2 bg-dark fs-sm fc-my-white fw-bold tr-02"
                     labelVal={field.label}
                     error={errors[field.name as keyof Fields]?.message}
                     {...register(field.name as keyof Fields)}

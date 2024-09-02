@@ -1,13 +1,13 @@
 import { AuthForm } from "../../../components/forms/auth-forms/AuthForm";
 import { Link } from "react-router-dom";
-import { SubmitButton } from "../../../components/ui/buttons/submit-buttons/SubmitButton";
 import { InputFloatingLabel } from "../../../components/ui/inputs/floating-labels/InputFloatingLabel";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { emailValidation } from "../../../utils/form/validation/input-validation/inputValidation";
 import { FormFields } from "../../../utils/form/validation/signUpValidation";
-import { useNavbarContext } from "../../../context/navbar/navbarContext";
+import { SubmitButton } from "../../../components/ui/buttons/Buttons";
+import { useNavbarContext } from "../../../context/navbar/NavbarContext";
 
 type Fields = z.infer<typeof emailValidation>;
 
@@ -32,15 +32,15 @@ export const ForgetPassowrd = () => {
     <AuthForm
       formBody={
         <>
-          <span className="fs-l fw-semibold m-0 p-0 text-light">
+          <span className="fs-l fw-semibold m-0 p-0 fc-my-white">
             Forgot your password?
           </span>
 
-          <span className="text-light fw-semibold fs-sm">
+          <span className="fc-my-white fw-semibold fs-sm">
             Please enter the <span className="fc-green-default">email</span> you
             use for sign in to
             <span className="fc-green-default"> Lorem </span>
-            <span className="text-light fw-semibold fs-sm">
+            <span className="fc-my-white fw-semibold fs-sm">
               so we can send you a
               <span className="fc-green-default"> verification code</span>
             </span>
@@ -53,8 +53,8 @@ export const ForgetPassowrd = () => {
                 inputType={field.type == "text" ? field.type : "password"}
                 labelVal={field.label}
                 error={errors[field.name as keyof Fields]?.message}
-                inputClass="custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 text-light fw-bold"
-                labelClass="mx-2 bg-dark fs-sm text-light fw-bold tr-02"
+                inputClass="custom-input-focus w-100 bg-transparent overflow-hidden py-3 px-2 fc-my-white fw-bold"
+                labelClass="mx-2 bg-dark fs-sm fc-my-white fw-bold tr-02"
                 {...register(field.name as keyof Fields)}
               />
             );

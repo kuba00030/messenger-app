@@ -1,0 +1,56 @@
+.section-list-item {
+  color: var(--fc-gray) !important;
+}
+.section-list-item:hover {
+  background-color: var(--color-default) !important;
+  color: var(--fc-white) !important;
+}
+.show-button {
+  color: var(--fc-green-default) !important;
+}
+.show-button:hover {
+  color: var(--fc-green-default-darker) !important;
+}
+.file-button {
+  border: solid 1px var(--fc-green-default) !important;
+}
+.file-button:hover {
+  border-color: var(--brc-default-darker) !important;
+}
+.file-button-icon {
+  color: var(--fc-green-default);
+}
+.file-button:hover .file-button-icon,
+.file-button-action-btn:hover {
+  color: var(--fc-green-default-darker) !important;
+}
+.file-button-action-btn {
+  color: var(--fc-gray);
+}
+.media-last-photo {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.custom-modal-body {
+  min-height: 300px !important;
+  max-height: 500px !important;
+}
+.modal-images-container {
+  max-height: 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+  gap: 1rem;
+}
+.modal-media-image {
+  width: 100%;
+  height: 7rem;
+}
+.media-imgage {
+  height: 66px;
+  width: 66px;
+  cursor: pointer;
+}
+.media-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

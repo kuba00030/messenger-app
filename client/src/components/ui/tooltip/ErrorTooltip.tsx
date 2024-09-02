@@ -1,14 +1,14 @@
 import { forwardRef } from "react";
 import { Tooltip } from "react-bootstrap";
 
-type ErrorTooltip = {
+type TErrorTooltip = {
   error: string | undefined;
 };
 
-export const ErrorTooltip = forwardRef<HTMLDivElement, ErrorTooltip>(
+export const ErrorTooltip = forwardRef<HTMLDivElement, TErrorTooltip>(
   function ErrorTooltip({ error }, ref) {
     return (
-      <Tooltip ref={ref} className="text-light">
+      <Tooltip ref={ref} className="fc-my-white">
         {error}
       </Tooltip>
     );

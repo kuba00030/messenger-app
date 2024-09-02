@@ -1,0 +1,10 @@
+.chat-window-msg-wrapper {
+  max-width: 1000px;
+}
+.user-msg {
+  background-color: var(--bg-default-darker) !important;
+}
+
+.friend-user-msg {
+  background-color: var(--bg-my-gray) !important;
+}

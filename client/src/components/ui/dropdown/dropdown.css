@@ -1,0 +1,6 @@
+.dropdown-item {
+  background-color: var(--bg-my-dark);
+}
+.dropdown-item:hover {
+  background-color: var(--bg-my-gray);
+}

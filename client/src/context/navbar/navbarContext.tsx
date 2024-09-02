@@ -1,10 +1,9 @@
-import { createContext, useContext } from "react";
-import { ContextProviderProps } from "../userContext/userContext";
+import { createContext, useContext, useState } from "react";
+import { ContextProviderProps } from "../user/UserContext";
 import { Link, useNavLinks } from "../../hooks/nav-bar/nav-links/useNavLinks";
 import { useLocalStorage } from "../../hooks/local-storage/useLocalStorage";
-import { useOpenOnClick } from "../../hooks/open-element/open-on-click/useOpenOnClick";
 
-type NavbarContext = {
+type TNavbarContext = {
   isOpened: boolean;
   setIsOpened: (isOpened: boolean) => void;
   navLinks: Link[];
@@ -12,7 +11,7 @@ type NavbarContext = {
   setCurrentLink: (link: string) => void;
 };
 
-export const NavbarContext = createContext<NavbarContext | null>(null);
+const NavbarContext = createContext<TNavbarContext | null>(null);
 
 const links: Link[] = [
   {
@@ -39,7 +38,7 @@ const links: Link[] = [
 
 export const NavbarContextProvider = ({ children }: ContextProviderProps) => {
   const { getItem } = useLocalStorage("activeLink");
-  const { isOpened, setIsOpened } = useOpenOnClick(false);
+  const [isOpened, setIsOpened] = useState<boolean>(false);
   const { navLinks, activeLink, setCurrentLink } = useNavLinks(
     links,
     getItem() ? getItem() : "/#home"

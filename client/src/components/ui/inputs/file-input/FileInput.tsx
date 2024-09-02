@@ -23,7 +23,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInput>(
         className={containerClass ? containerClass : "text-start m-0"}
       >
         <Form.Label
-          className={labelClass ? labelClass : "text-light fw-bold fs-sm"}
+          className={labelClass ? labelClass : "fc-my-white fw-bold fs-sm"}
           style={{ cursor: "pointer" }}
         >
           {icon ? icon : <i className="bi bi-card-image me-2 fs-xl" />}

@@ -1,11 +1,12 @@
 import { Nav } from "react-bootstrap";
 import { HashLink } from "react-router-hash-link";
-import { NavLink } from "../nav-bar/NavLink";
 import "../nav-links.css";
 import "./side-bar-link.css";
 import "../../../../styles/global.css";
-import { useNavbarContext } from "../../../../context/navbar/navbarContext";
-export type SideBarLink = Omit<NavLink, "value" | "activeHref"> & {
+import { useNavbarContext } from "../../../../context/navbar/NavbarContext";
+import { TNavLink } from "../nav-bar/NavLink";
+
+export type TSideBarLink = Omit<TNavLink, "value" | "activeHref"> & {
   icon: React.ReactNode;
 };
 
@@ -15,7 +16,7 @@ export const SideBarLink = ({
   activeClass,
   onClick,
   icon,
-}: SideBarLink) => {
+}: TSideBarLink) => {
   const { activeLink } = useNavbarContext();
   return (
     <Nav.Item className="my-0 my-md-4">

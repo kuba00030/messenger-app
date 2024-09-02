@@ -1,7 +1,9 @@
 import { Badge } from "react-bootstrap";
 
+export type Notification = number | null;
+
 type NotificationBadge = {
-  notifications: number | string;
+  notifications: Notification;
   className?: string;
 };
 
@@ -9,11 +11,13 @@ export const NotificationBadge = ({
   notifications,
   className,
 }: NotificationBadge) => {
-  return (
+  return notifications ? (
     <Badge
       className={`d-flex justify-content-center align-items-center ${className}`}
     >
       <span>{notifications}</span>
     </Badge>
+  ) : (
+    <></>
   );
 };
