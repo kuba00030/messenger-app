@@ -7,5 +7,5 @@ export const useToggleCompoenent = (initState: boolean) => {
     setIsOpened((prevState) => !prevState);
   };
 
-  return { isOpened, handleToggleComponent };
+  return { isOpened, handleToggleComponent, setIsOpened };
 };

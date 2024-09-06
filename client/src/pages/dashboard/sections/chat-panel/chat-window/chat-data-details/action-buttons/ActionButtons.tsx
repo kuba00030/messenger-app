@@ -8,8 +8,10 @@ import { useChatRoomContext } from "../../../../../../../context/chat/ChatRoomCo
 import { iconsClassBootsrap } from "../../../../../../../components/ui/icons/icons";
 import { ChatMembersModal } from "../../../../../../../components/ui/modal/ChatMembersModalBody";
 import { useModalContext } from "../../../../../../../context/modal/ModalContext";
-import { ChatAddMemberModalBody } from "../../../../../../../components/ui/modal/ChatAddMemberModalBody";
+import { ChatAddMemberModalBody } from "../../../../../../../components/ui/modal/ChatAddMembersModalBody";
 import { useChatMembersContext } from "../../../../../../../context/chat/ChatMembers";
+import { useEffect } from "react";
+import { ChatChangeNicksModalBody } from "../../../../../../../components/ui/modal/ChatChangeNicksModalBody";
 
 export const actionBtnStyle =
   "user-info-action-button fc-my-gray shadow-none border-0 mx-auto tr-02 fs-sm";
@@ -42,11 +44,47 @@ const ActionBtn = ({
 
 export const ActionButtons = () => {
   const { user } = useUserContext();
-  const { chatRoom } = useChatRoomContext();
-  const { checkIfUserAdmin, getAdmins } = useChatMembersContext();
+  const { chatRoom, toggleFavourite, muteChatRoom, unmuteChatRoom } =
+    useChatRoomContext();
+  const {
+    checkIfUserAdmin,
+    getAdmins,
+    blockMember,
+    unblockMember,
+    removeMember,
+
+    members,
+  } = useChatMembersContext();
   const { handleOpenModal, setModalContent } = useModalContext();
 
-  const handleMembersClick = () => {
+  const handleToggleFavourite = () => {
+    toggleFavourite();
+    // TODO:
+    // edit state holding all chats (chat panel left side)
+  };
+
+  const handleNicksClick = () => {
+    // TODO:
+    // display nicks modal wid editable fields
+    setModalContent({
+      title: "Change nickname",
+      size: "lg",
+      component: <ChatChangeNicksModalBody />,
+    });
+    handleOpenModal();
+  };
+
+  const handleToggleMuteChatRoom = () => {
+    // TODO:
+    // mute chat room db
+    if (chatRoom.isMuted) {
+      unmuteChatRoom();
+    } else {
+      muteChatRoom();
+    }
+  };
+
+  const handleShowMembers = () => {
     setModalContent({
       title: "Members",
       size: "sm",
@@ -56,7 +94,9 @@ export const ActionButtons = () => {
     handleOpenModal();
   };
 
-  const handleAddClick = () => {
+  const handleAddMember = () => {
+    // TODO:
+    // add member in db chat
     setModalContent({
       title: "Add new member",
       size: "sm",
@@ -64,33 +104,70 @@ export const ActionButtons = () => {
     });
     handleOpenModal();
   };
-  // TODO:
-  // functions for each button
+
+  const handleToggleBlockMember = () => {
+    // TODO:
+    // block user in db
+    if (members[1].isBlocked) {
+      unblockMember(members[1].id);
+    } else {
+      blockMember(members[1].id);
+    }
+  };
+
+  const handleLeaveChatRoom = () => {
+    if (checkIfUserAdmin(user.id)) {
+      if (getAdmins().length > 1) {
+        removeMember(user.id);
+      } else {
+        window.alert(`You can't leave this chat if you are the only admin.`);
+      }
+    } else {
+      removeMember(user.id);
+      // TODO:
+      // in db remove member from the chat & change his role to 'participant'
+      //  or always when we add someone set new member role as participant
+    }
+  };
+
+  useEffect(() => {
+    console.log(chatRoom.isMuted);
+  }, [chatRoom]);
   return (
     <div className="d-flex flex-row align-items-center justify-content-between p-4 mt-4 border border-start-0 border-bottom-0 border-end-0 border-secondary">
       <ActionBtn
         text="FAVOURITE"
-        icon={<i className={iconsClassBootsrap.favourite} />}
-        onClick={() => {}}
+        icon={
+          <i
+            className={
+              chatRoom.isFavourite
+                ? `${iconsClassBootsrap.favouriteFill} fc-green-default`
+                : iconsClassBootsrap.favourite
+            }
+          />
+        }
+        onClick={handleToggleFavourite}
       />
       <ActionBtn
         text="NICKS"
         icon={<i className={iconsClassBootsrap.edit} />}
-        onClick={() => {}}
+        onClick={handleNicksClick}
       />
-      {checkIfUserAdmin(user.id) ? (
-        <ActionBtn
-          text="ADD"
-          icon={<i className={iconsClassBootsrap.addUser} />}
-          onClick={handleAddClick}
-        />
-      ) : (
-        <ActionBtn
-          text="MUTE"
-          icon={<i className={iconsClassBootsrap.mute} />}
-          onClick={() => {}}
-        />
-      )}
+
+      <ActionBtn
+        text="MUTE"
+        icon={
+          <i
+            className={
+              chatRoom.isMuted
+                ? `${iconsClassBootsrap.muted} fc-green-default`
+                : iconsClassBootsrap.mute
+            }
+          />
+        }
+        onClick={handleToggleMuteChatRoom}
+      />
+
       <Dropdown as={ButtonGroup}>
         <div className={actionButtonWrapper}>
           <Dropdown.Toggle as={DropdownCustomToggle}></Dropdown.Toggle>
@@ -99,7 +176,7 @@ export const ActionButtons = () => {
         <Dropdown.Menu className="bg-my-dark tr-02">
           {chatRoom.type === "direct" && (
             <DropdownItem
-              onClick={() => {}}
+              onClick={handleToggleBlockMember}
               text="Block"
               icon={<i className={iconsClassBootsrap.block} />}
             />
@@ -114,17 +191,23 @@ export const ActionButtons = () => {
           {chatRoom.type === "group" && (
             <>
               <DropdownItem
-                onClick={handleMembersClick}
+                onClick={handleShowMembers}
                 text="Members"
                 icon={<i className={iconsClassBootsrap.users} />}
               />
-              {getAdmins().length < 1 && (
+              {checkIfUserAdmin(user.id) && (
                 <DropdownItem
-                  onClick={() => {}}
-                  text="Leave"
-                  icon={<i className={iconsClassBootsrap.signOut} />}
+                  onClick={handleAddMember}
+                  text="Add"
+                  icon={<i className={iconsClassBootsrap.addUser} />}
                 />
               )}
+
+              <DropdownItem
+                onClick={handleLeaveChatRoom}
+                text="Leave"
+                icon={<i className={iconsClassBootsrap.signOut} />}
+              />
             </>
           )}
         </Dropdown.Menu>

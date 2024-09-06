@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { useLocalStorage } from "../../hooks/local-storage/useLocalStorage";
 
-export type TUser = {
+export type TUserProfile = {
   id: string;
   firstName: string;
   lastName: string;
@@ -12,7 +12,7 @@ export type TUser = {
 };
 
 type TUserContext = {
-  user: TUser;
+  user: TUserProfile;
 };
 
 export type ContextProviderProps = {
@@ -23,7 +23,7 @@ const UserContext = createContext<TUserContext | null>(null);
 
 export const UserContextProvider = ({ children }: ContextProviderProps) => {
   const { getItem } = useLocalStorage("user");
-  const [user] = useState<TUser>({
+  const [user] = useState<TUserProfile>({
     id: "1111",
     firstName: "bbb",
     lastName: "ccc",

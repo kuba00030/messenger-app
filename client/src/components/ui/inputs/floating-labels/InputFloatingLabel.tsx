@@ -7,13 +7,15 @@ import { forwardRef } from "react";
 import { PasswordVisbilityToggle } from "../../buttons/Buttons";
 
 export type FloatingLabel = {
-  id: string;
+  id?: string;
   containerClass?: string;
   inputClass?: string;
   inputType: "text" | "password";
   labelClass?: string;
   labelVal: string;
-  error: string | undefined;
+  error?: string | undefined;
+  onChange: (inputValue: string) => void;
+  inputValue: string;
 };
 
 export const InputFloatingLabel = forwardRef<HTMLInputElement, FloatingLabel>(
@@ -26,7 +28,8 @@ export const InputFloatingLabel = forwardRef<HTMLInputElement, FloatingLabel>(
       inputClass,
       labelClass,
       containerClass,
-      ...rest
+      onChange,
+      inputValue,
     },
     ref
   ) {
@@ -58,7 +61,8 @@ export const InputFloatingLabel = forwardRef<HTMLInputElement, FloatingLabel>(
             autoComplete="new-password"
             required
             ref={ref}
-            {...rest}
+            onChange={(e) => onChange(e.target.value)}
+            value={inputValue}
           />
           {inputType === "password" && (
             <PasswordVisbilityToggle

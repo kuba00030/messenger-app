@@ -2,12 +2,9 @@
   background-color: var(--bg-my-gray) !important;
 }
 .user-info-action-button:hover,
-.user-info-action-button:focus,
-.user-info-action-button:hover ~ .user-info-action-button-text,
-.user-info-action-button:focus ~ .user-info-action-button-text {
+.user-info-action-button:hover ~ .user-info-action-button-text {
   color: var(--fc-white) !important;
 }
-.user-info-action-button:hover,
-.user-info-action-button:focus {
+.user-info-action-button:hover {
   background-color: var(--bg-default-darker) !important;
 }

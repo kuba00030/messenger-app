@@ -13,6 +13,7 @@ export const ChatDetails = ({
   closeChatDetails: () => void;
 }) => {
   const { windowWidth } = useWindowWidth();
+
   return (
     <AnimatePresence mode="wait">
       {isOpened && (

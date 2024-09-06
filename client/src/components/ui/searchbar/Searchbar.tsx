@@ -1,16 +1,35 @@
+import { useRef } from "react";
+
 type Searchbar = {
   containerClass?: string;
   iconClass?: string;
   inputClass?: string;
-  onChange: (e?: any) => void;
+  delay: number;
+  immediateAction?: (inputValue?: string) => void;
+  delayedAction: (inputValue: string) => void;
 };
 
 export const Searchbar = ({
   containerClass,
   iconClass,
   inputClass,
-  onChange,
+  delay,
+  immediateAction,
+  delayedAction,
 }: Searchbar) => {
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const onChange = (inputValue: string) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    if (immediateAction) immediateAction(inputValue);
+
+    timeoutRef.current = setTimeout(() => {
+      delayedAction(inputValue);
+    }, delay);
+  };
+
   return (
     <div
       className={
@@ -32,7 +51,7 @@ export const Searchbar = ({
             : "px-2 fc-my-gray bg-transparent fs-sm fw-semibold border-0 w-100"
         }
         placeholder="Search here..."
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.value)}
       />
     </div>
   );

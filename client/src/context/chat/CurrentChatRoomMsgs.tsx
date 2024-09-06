@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { ContextProviderProps } from "../../user/UserContext";
+import { ContextProviderProps } from "../user/UserContext";
 
 export type TMessage = {
   id: string;

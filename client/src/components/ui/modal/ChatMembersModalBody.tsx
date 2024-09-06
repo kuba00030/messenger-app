@@ -8,31 +8,42 @@ import { DropdownItem } from "../dropdown/DropdownItem";
 import { iconsClassBootsrap } from "../icons/icons";
 import { ProfileCard } from "../data/ProfileCard";
 import { useChatMembersContext } from "../../../context/chat/ChatMembers";
+import {
+  TUser,
+  useChatRoomContext,
+} from "../../../context/chat/ChatRoomContext";
+import { ScrollTrigger } from "../../container/Container";
 
-export type TMember = {
-  id: string;
-  avatar: string;
-  name: string;
-};
-
-const Member = ({ member }: { member: TMember }) => {
+const Member = ({ member }: { member: TUser }) => {
+  const { setChatRoom } = useChatRoomContext();
   const { user } = useUserContext();
-  const { checkIfUserAdmin, removeMember } = useChatMembersContext();
+  const { checkIfUserAdmin, removeMember, blockMember, unblockMember } =
+    useChatMembersContext();
 
-  const handleDeleteMember = () => {
+  const handleToggleBlockMember = () => {
     removeMember(member.id);
   };
 
-  const handleMuteUser = () => {
+  const handleBlockUser = (member: TUser) => {
     // mute user
+    if (member.isBlocked) {
+      unblockMember(member.id);
+    } else {
+      blockMember(member.id);
+    }
   };
 
-  const handleSendMessage = () => {
-    // open chat with pointed user
+  const handleSendMessage = (chatRoomID: string) => {
+    // get chatRoom info (id,type,chatName,avatar)
+    // and set new chat room (open new one)
   };
+
   return (
     <div className="d-flex flex-row align-items-center px-2">
-      <ProfileCard avatar={member.avatar} displayName={member.name} />
+      <ProfileCard
+        avatar={member.avatar}
+        displayName={member.nickName ? member.nickName : member.name}
+      />
       {user.id !== member.id && (
         <Dropdown as={ButtonGroup} className="ms-auto">
           <div className={actionButtonWrapper}>
@@ -45,13 +56,13 @@ const Member = ({ member }: { member: TMember }) => {
               icon={<i className={iconsClassBootsrap.chat} />}
             />
             <DropdownItem
-              onClick={handleMuteUser}
-              text="Mute"
-              icon={<i className={iconsClassBootsrap.mute} />}
+              onClick={() => handleBlockUser(member)}
+              text={`${member.isBlocked ? "Unblock" : "Block"}`}
+              icon={<i className={iconsClassBootsrap.block} />}
             />
             {checkIfUserAdmin(user.id) && (
               <DropdownItem
-                onClick={handleDeleteMember}
+                onClick={handleToggleBlockMember}
                 text="Delete"
                 icon={<i className={iconsClassBootsrap.delete} />}
               />
@@ -67,6 +78,11 @@ export const ChatMembersModal = () => {
   const { members, getAdmins } = useChatMembersContext();
   const { isOpened: showAdmins, handleToggleComponent: handleShowAdmins } =
     useToggleCompoenent(false);
+  const handleGetMoreMembers = () => {
+    // TODO:
+    // get more members (if they exist) if we scroll to bottom
+  };
+
   return (
     <div className="d-flex flex-column overflow-hidden">
       <PrimaryButton
@@ -74,14 +90,18 @@ export const ChatMembersModal = () => {
         className="rounded-0 mb-4 bg-default shadow-none border-0 fs-sm"
         textValue={`${showAdmins ? "Admins" : "All members"}`}
         onClick={handleShowAdmins}
-      ></PrimaryButton>
-      <div className="custom-modal-body overflow-auto">
+      />
+      <ScrollTrigger
+        offset={0}
+        containerClass="custom-modal-body"
+        onBottom={handleGetMoreMembers}
+      >
         {showAdmins
           ? getAdmins().map((member) => (
               <Member key={member.id} member={member} />
             ))
           : members.map((member) => <Member key={member.id} member={member} />)}
-      </div>
+      </ScrollTrigger>
     </div>
   );
 };

@@ -13,3 +13,6 @@
   background-color: var(--color-default);
   color: white;
 }
+.btn-fill-h-primary:hover {
+  background-color: var(--color-default) !important;
+}

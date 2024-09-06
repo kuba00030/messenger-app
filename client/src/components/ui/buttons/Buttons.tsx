@@ -22,7 +22,7 @@ export const PrimaryButton = ({
     className={
       className
         ? `btn-h-primary tr-02 ${className}`
-        : "fs-sm px-2 rounded-2 bg-default btn-h-primary border-0 tr-02 fc-my-white"
+        : "fs-sm px-2 rounded-2 bg-default btn-h-primary border-0 tr-02 fc-my-white shadow-none"
     }
     onClick={onClick}
     type={type ? type : "button"}
@@ -43,7 +43,7 @@ export const PasswordVisbilityToggle = ({
 }: PasswordVisbilityToggle) => {
   return (
     <Button
-      className="bg-transparent p-0 border-0 fc-my-white me-2"
+      className="bg-transparent p-0 border-0 fc-my-white me-2 shadow-none"
       onClick={onClick}
     >
       <i
@@ -96,11 +96,12 @@ type AddButton = {
 export const AddButton = ({ className, onClick }: AddButton) => {
   return (
     <Button
+      onClick={onClick}
       type="button"
       className={
         className
           ? className
-          : "p-0 px-2 my-auto rounded-1 border-0 add-btn tr-02"
+          : "p-0 px-2 my-auto rounded-1 border-0 add-btn tr-02 shadow-none"
       }
     >
       +
@@ -128,17 +129,44 @@ export const SubmitButton = ({
 }: SubmitButton) => {
   const [loading, setLoading] = useState<boolean>(false);
 
+  const handleClick = () => {
+    setLoading(!loading);
+    setTimeout(() => {
+      onClick();
+      setLoading(!loading);
+    }, 500);
+  };
+
   return (
     <Button
       type="submit"
       className={
         className
           ? className
-          : "fw-bold px-2 rounded-2 bg-default btn-h-primary border-0 tr-02"
+          : "fw-bold px-2 rounded-2 bg-default btn-h-primary border-0 tr-02 shadow-none"
       }
-      onClick={onClick}
+      onClick={handleClick}
     >
       {loading ? <Spinner animation="border" /> : textValue}
+    </Button>
+  );
+};
+
+export const HoverFillButton = ({
+  className,
+  onClick,
+  textValue,
+  children,
+}: PrimaryButton) => {
+  return (
+    <Button
+      className={`bg-transparent border-0 ${
+        className ? className : "tr-02 btn-fill-h-primary shadow-none"
+      }`}
+      onClick={onClick}
+    >
+      {textValue}
+      {children}
     </Button>
   );
 };

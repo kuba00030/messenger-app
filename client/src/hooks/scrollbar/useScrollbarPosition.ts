@@ -2,15 +2,17 @@ import { useEffect, useRef } from "react";
 
 type Func = () => void;
 
+export type TUseScrollbarPosition = {
+  onTop?: Func;
+  onBottom?: Func;
+  offset: number;
+};
+
 export const useScrollPosition = ({
   onTop,
   onBottom,
   offset,
-}: {
-  onTop?: Func;
-  onBottom?: Func;
-  offset: number;
-}) => {
+}: TUseScrollbarPosition) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

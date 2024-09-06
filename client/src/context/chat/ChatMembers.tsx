@@ -1,56 +1,77 @@
 import { createContext, useContext, useReducer } from "react";
 import { ContextProviderProps } from "../user/UserContext";
-import { TChatParticipant } from "./ChatRoomContext";
+import { TUser } from "./ChatRoomContext";
 
 type ChatMembersContextType = {
-  members: TChatParticipant[];
+  members: TUser[];
   checkIfUserAdmin: (userID: string) => boolean;
-  getAdmins: () => TChatParticipant[];
-  addMember: (newMember: TChatParticipant) => void;
+  getAdmins: () => TUser[];
+  addMember: (newMember: TUser) => void;
   removeMember: (memberId: string) => void;
   addAdmin: (memberId: string) => void;
   removeAdmin: (memberId: string) => void;
-  updateMembers: (members: TChatParticipant[]) => void;
+  updateMembers: (members: TUser[]) => void;
   clearMembers: () => void;
-  checkIfUserMember: (userID: string) => boolean;
+  checkIfUserMember: (userId: string) => boolean;
+  blockMember: (memberId: string) => void;
+  unblockMember: (memberId: string) => void;
+  editMemberName: (memberId: string, newNickName: string) => void;
+  removeMemberNickName: (memberId: string) => void; // Nowa metoda
 };
 
 const ChatMembersContext = createContext<ChatMembersContextType | null>(null);
 
 type State = {
-  members: TChatParticipant[];
+  members: TUser[];
 };
 
 type Action =
-  | { type: "ADD_MEMBER"; payload: TChatParticipant }
+  | { type: "UPDATE_MEMBERS"; payload: TUser[] }
+  | { type: "ADD_MEMBER"; payload: TUser }
   | { type: "REMOVE_MEMBER"; payload: string }
+  | { type: "BLOCK_MEMBER"; payload: string }
+  | { type: "UNBLOCK_MEMBER"; payload: string }
   | { type: "ADD_ADMIN"; payload: string }
   | { type: "REMOVE_ADMIN"; payload: string }
-  | { type: "UPDATE_MEMBERS"; payload: TChatParticipant[] }
-  | { type: "CLEAR_STATE"; payload: TChatParticipant[] };
+  | { type: "EDIT_MEMBER_NAME"; payload: { id: string; newNickName: string } }
+  | { type: "REMOVE_MEMBER_NICKNAME"; payload: string } // Nowa akcja
+  | { type: "CLEAR_STATE"; payload: TUser[] };
 
 const initState: State = {
   members: [
-    { id: "1111", avatar: "", role: "admin", status: true, name: "ja" },
+    {
+      id: "1111",
+      avatar: "",
+      role: "admin",
+      name: "ja",
+      isBlocked: false,
+    },
     {
       id: "1112",
       avatar: "",
       role: "participant",
-      status: true,
       name: "John Doe",
-    },
-    {
-      id: "1113",
-      avatar: "",
-      role: "participant",
-      status: true,
-      name: "Ann Doe",
+      isBlocked: false,
     },
   ],
 };
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
+    case "BLOCK_MEMBER":
+      return {
+        members: state.members.map((member) =>
+          member.id === action.payload ? { ...member, isBlocked: true } : member
+        ),
+      };
+    case "UNBLOCK_MEMBER":
+      return {
+        members: state.members.map((member) =>
+          member.id === action.payload
+            ? { ...member, isBlocked: false }
+            : member
+        ),
+      };
     case "ADD_MEMBER":
       return { members: [action.payload, ...state.members] };
     case "REMOVE_MEMBER":
@@ -71,10 +92,27 @@ const reducer = (state: State, action: Action): State => {
             : member
         ),
       };
+    case "EDIT_MEMBER_NAME":
+      return {
+        members: state.members.map((member) =>
+          member.id === action.payload.id
+            ? { ...member, nickName: action.payload.newNickName }
+            : member
+        ),
+      };
+    case "REMOVE_MEMBER_NICKNAME":
+      return {
+        members: state.members.map((member) =>
+          member.id === action.payload
+            ? { ...member, nickName: undefined }
+            : member
+        ),
+      };
     case "UPDATE_MEMBERS":
       return { members: action.payload };
     case "CLEAR_STATE":
       return { members: [] };
+
     default:
       return state;
   }
@@ -85,7 +123,7 @@ export const ChatMembersContextProvider = ({
 }: ContextProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initState);
 
-  const addMember = (newMember: TChatParticipant) => {
+  const addMember = (newMember: TUser) => {
     dispatch({ type: "ADD_MEMBER", payload: newMember });
   };
 
@@ -101,12 +139,31 @@ export const ChatMembersContextProvider = ({
     dispatch({ type: "REMOVE_ADMIN", payload: memberId });
   };
 
-  const updateMembers = (members: TChatParticipant[]) => {
+  const updateMembers = (members: TUser[]) => {
     dispatch({ type: "UPDATE_MEMBERS", payload: members });
   };
 
   const clearMembers = () => {
     dispatch({ type: "CLEAR_STATE", payload: [] });
+  };
+
+  const blockMember = (memberId: string) => {
+    dispatch({ type: "BLOCK_MEMBER", payload: memberId });
+  };
+
+  const unblockMember = (memberId: string) => {
+    dispatch({ type: "UNBLOCK_MEMBER", payload: memberId });
+  };
+
+  const editMemberName = (memberId: string, newNickName: string) => {
+    dispatch({
+      type: "EDIT_MEMBER_NAME",
+      payload: { id: memberId, newNickName },
+    });
+  };
+
+  const removeMemberNickName = (memberId: string) => {
+    dispatch({ type: "REMOVE_MEMBER_NICKNAME", payload: memberId });
   };
 
   const checkIfUserAdmin = (userID: string): boolean => {
@@ -134,6 +191,10 @@ export const ChatMembersContextProvider = ({
         updateMembers,
         clearMembers,
         checkIfUserMember,
+        blockMember,
+        unblockMember,
+        editMemberName,
+        removeMemberNickName,
       }}
     >
       {children}

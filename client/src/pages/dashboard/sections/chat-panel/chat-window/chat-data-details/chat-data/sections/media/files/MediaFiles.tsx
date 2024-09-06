@@ -12,8 +12,8 @@ import {
   ChatDataHeaderContainer,
   ChatDataSectionContainer,
 } from "../../chat-info/ChatInfo";
-import { TChatAttachmentItem } from "../../../../../../../../../../context/chat/messages/CurrentChatRoomMsgs";
 import { iconsClassBootsrap } from "../../../../../../../../../../components/ui/icons/icons";
+import { TChatAttachmentItem } from "../../../../../../../../../../context/chat/CurrentChatRoomMsgs";
 
 const AttachedFile = ({
   displayedName,
@@ -43,7 +43,7 @@ const AttachedFile = ({
         buttonProps={{
           type: "button",
           className:
-            "ms-auto bg-transparent border-0 shadow-none file-button-action-btn tr-02",
+            "ms-auto bg-transparent border-0 shadow-none fc-my-gray tr-02",
         }}
         icon={<i className={iconsClassBootsrap.download} />}
       />
@@ -61,7 +61,7 @@ const ModalBody = ({ files }: { files: TChatAttachmentItem[] }) => {
   const handleSearch = () => {};
   return (
     <div className="d-flex flex-column flex-fill pt-4">
-      <Searchbar onChange={handleSearch} />
+      <Searchbar delay={0} delayedAction={handleSearch} />
       <div className="d-flex flex-column flex-fill custom-modal-body overflow-auto mt-4 gap-4">
         <AttachedFiles files={files} />
       </div>

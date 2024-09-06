@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { useToggleCompoenent } from "../toggle-component/useToggleComponent";
 
 export const useOpenOnScroll = (initialState: boolean, threshold?: number) => {
-  const [isOpened, setIsOpened] = useState<boolean>(initialState);
+  const { isOpened, setIsOpened } = useToggleCompoenent(initialState);
   const [prevScrollpos, setPrevScrollpos] = useState(window.scrollY);
 
   useEffect(() => {

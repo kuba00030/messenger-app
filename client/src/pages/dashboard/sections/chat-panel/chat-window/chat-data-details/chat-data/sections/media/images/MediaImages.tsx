@@ -21,32 +21,37 @@ import { useOnStateChange } from "../../../../../../../../../../hooks/on-change/
 import { useScrollPosition } from "../../../../../../../../../../hooks/scrollbar/useScrollbarPosition";
 import { forwardRef, useState } from "react";
 
-const Image = ({
+export const Image = ({
   photoUrl,
   children,
   onClick,
   containerClass,
 }: {
   containerClass?: string;
-  onClick: () => void;
+  onClick?: () => void;
   photoUrl: string;
   children?: React.ReactNode;
 }) => {
   return (
-    <div
-      className={`position-relative overflow-hidden rounded-2 bg-my-gray ${containerClass}`}
-      onClick={onClick}
-    >
+    <div className={`position-relative ${containerClass}`} onClick={onClick}>
       <img src={photoUrl} style={{ width: "100%", height: "100%" }}></img>
       {children}
     </div>
   );
 };
 
-const ImageOverlay = () => {
+export const ImageOverlay = ({
+  className,
+  textValue,
+}: {
+  className?: string;
+  textValue?: string;
+}) => {
   return (
-    <div className="position-absolute top-0 d-flex justify-content-center align-items-center border-0 w-100 h-100 fw-semibold fc-my-white media-last-photo">
-      +10
+    <div
+      className={`position-absolute top-0 d-flex justify-content-center align-items-center border-0 w-100 h-100 fw-semibold fc-my-whit ${className}`}
+    >
+      {textValue}
     </div>
   );
 };
@@ -64,10 +69,10 @@ const ImageGallery = ({ images, imgOnClick }: TImageGallery) => {
           <Image
             key={index}
             photoUrl={image.src}
-            containerClass="media-imgage"
+            containerClass="media-imgage bg-my-gray overflow-hidden rounded-2"
             onClick={() => imgOnClick(index)}
           >
-            <ImageOverlay />
+            <ImageOverlay textValue="+10" className="media-last-photo" />
           </Image>
         ) : (
           <Image
@@ -76,7 +81,7 @@ const ImageGallery = ({ images, imgOnClick }: TImageGallery) => {
             onClick={() => {
               imgOnClick(index);
             }}
-            containerClass="media-imgage"
+            containerClass="media-imgage bg-my-gray overflow-hidden rounded-2"
           />
         );
       })}
@@ -92,7 +97,7 @@ const ModalImageGallery = forwardRef<HTMLDivElement, TImageGallery>(
           return (
             <Image
               key={img.src + index}
-              containerClass="modal-media-image"
+              containerClass="modal-media-image overflow-hidden"
               photoUrl={img.src}
               onClick={() => imgOnClick(index)}
             />

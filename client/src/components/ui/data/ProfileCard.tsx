@@ -5,10 +5,12 @@ export const ProfileCard = ({
   avatar,
   displayName,
   status,
+  textClass,
 }: {
   avatar?: string;
   displayName: string;
   status?: boolean;
+  textClass?: string;
 }) => {
   return (
     <div className="d-flex flex-row align-items-center py-2">
@@ -22,7 +24,13 @@ export const ProfileCard = ({
         <Avatar size="sm" avatar={avatar} imgContainerBgClass="bg-my-gray" />
       )}
       <div className="ms-2 overflow-hidden">
-        <span className="fs-sm fc-my-white text-truncate">{displayName}</span>
+        <span
+          className={`${
+            textClass ? textClass : "fs-sm fc-my-white"
+          } text-truncate fw-semibold`}
+        >
+          {displayName}
+        </span>
       </div>
     </div>
   );

@@ -5,6 +5,8 @@ import { useChatRoomContext } from "../../../../../../../../../context/chat/Chat
 import { IconButton } from "../../../../../../../../../components/ui/buttons/Buttons";
 import { iconsClassBootsrap } from "../../../../../../../../../components/ui/icons/icons";
 import { useChatMembersContext } from "../../../../../../../../../context/chat/ChatMembers";
+import { useModalContext } from "../../../../../../../../../context/modal/ModalContext";
+import { ChatEditNameModalBody } from "../../../../../../../../../components/ui/modal/ChatEditNameModalBody";
 
 export const ChatDataSectionContainer = ({
   children,
@@ -32,7 +34,7 @@ export const ChatDataHeaderContainer = ({
 
 const ChatInfoItem = ({ header, data }: { header: string; data: string }) => {
   return (
-    <div className="mx-4 overflow-hidden">
+    <div className="mx-4 overflow-hidden fw-semibold">
       <span className="fs-xs fc-my-gray-darker d-block">{header}</span>
       <span className="fs-sm fc-my-gray">{data}</span>
     </div>
@@ -43,6 +45,16 @@ export const ChatInfo = () => {
   const { user } = useUserContext();
   const { chatRoom } = useChatRoomContext();
   const { checkIfUserAdmin } = useChatMembersContext();
+  const { setModalContent, handleOpenModal } = useModalContext();
+
+  const handleEditNameClick = () => {
+    setModalContent({
+      title: "Edit chat name",
+      size: "lg",
+      component: <ChatEditNameModalBody />,
+    });
+    handleOpenModal();
+  };
 
   return (
     <ChatDataSectionContainer>
@@ -59,6 +71,7 @@ export const ChatInfo = () => {
             buttonProps={{
               className:
                 "user-info-action-button fc-my-gray border-0 shadow-none ms-auto me-4 mt-auto",
+              onClick: handleEditNameClick,
             }}
             icon={<i className={iconsClassBootsrap.edit} />}
           />

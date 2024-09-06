@@ -6,10 +6,12 @@
   height: 30px;
   width: 30px;
 }
-.status-bar {
-  position: absolute;
+.status-dot {
   width: 10px;
   height: 10px;
+}
+.status-bar {
+  position: absolute;
   bottom: 0px;
   right: 8px;
   border: solid 2px var(--bg-my-dark);

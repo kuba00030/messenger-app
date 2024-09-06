@@ -13,19 +13,17 @@
 }
 .file-button {
   border: solid 1px var(--fc-green-default) !important;
+  cursor: pointer;
 }
 .file-button:hover {
+  filter: brightness(80%) !important;
   border-color: var(--brc-default-darker) !important;
 }
 .file-button-icon {
-  color: var(--fc-green-default);
+  color: var(--fc-green-default) !important;
 }
-.file-button:hover .file-button-icon,
-.file-button-action-btn:hover {
+.file-button:hover .file-button-icon {
   color: var(--fc-green-default-darker) !important;
-}
-.file-button-action-btn {
-  color: var(--fc-gray);
 }
 .media-last-photo {
   background-color: rgba(0, 0, 0, 0.7);

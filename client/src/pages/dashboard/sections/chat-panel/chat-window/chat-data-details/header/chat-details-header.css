@@ -2,11 +2,16 @@
   height: 250px;
   width: 100%;
 }
+.chat-details-header-avatar-overlay {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
 .chat-details-header-button {
   position: absolute;
-  left: 0;
+  left: -40px;
+  z-index: 1;
 }
 .chat-details-header-data {
   position: absolute;
   bottom: 0;
+  z-index: 1;
 }
