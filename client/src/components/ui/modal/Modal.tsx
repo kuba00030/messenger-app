@@ -16,8 +16,8 @@ export const CustomModal = ({
 }) => {
   return (
     <Modal show={show} centered size={size} fullscreen="sm-down">
-      <Modal.Header className="d-flex justify-content-between align-items-center bg-my-dark px-4 py-2 border-secondary border-0">
-        <Modal.Title className="fc-my-gray fs-m p-0 m-0 mx-auto">
+      <Modal.Header className="d-flex justify-content-between align-items-center bg-default px-4 py-2 border-secondary border-0">
+        <Modal.Title className="fc-my-white fs-m p-0 m-0 mx-auto">
           {title}
         </Modal.Title>
         <CloseButton

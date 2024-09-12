@@ -22,7 +22,7 @@ export const PrimaryButton = ({
     className={
       className
         ? `btn-h-primary tr-02 ${className}`
-        : "fs-sm px-2 rounded-2 bg-default btn-h-primary border-0 tr-02 fc-my-white shadow-none"
+        : "fs-sm px-2 rounded-1 bg-default btn-h-primary border-0 tr-02 fc-my-white shadow-none"
     }
     onClick={onClick}
     type={type ? type : "button"}
@@ -143,7 +143,7 @@ export const SubmitButton = ({
       className={
         className
           ? className
-          : "fw-bold px-2 rounded-2 bg-default btn-h-primary border-0 tr-02 shadow-none"
+          : "fw-bold px-2 rounded-2 bg-default btn-h-primary border-0 tr-02 shadow-none rounded-1"
       }
       onClick={handleClick}
     >
@@ -160,7 +160,7 @@ export const HoverFillButton = ({
 }: PrimaryButton) => {
   return (
     <Button
-      className={`bg-transparent border-0 ${
+      className={`bg-transparent border-0 rounded-1 ${
         className ? className : "tr-02 btn-fill-h-primary shadow-none"
       }`}
       onClick={onClick}

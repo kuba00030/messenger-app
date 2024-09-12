@@ -120,11 +120,13 @@ export const ChatChangeNicksModalBody = () => {
 
   return (
     <>
-      <Searchbar
-        delay={500}
-        immediateAction={handleIsSearching}
-        delayedAction={handleSearch}
-      />
+      <div className="w-100 mt-4">
+        <Searchbar
+          delay={500}
+          immediateAction={handleIsSearching}
+          delayedAction={handleSearch}
+        />
+      </div>
 
       <ScrollTrigger
         offset={10}

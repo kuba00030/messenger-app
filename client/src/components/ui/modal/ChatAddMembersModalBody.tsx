@@ -63,14 +63,16 @@ export const ChatAddMemberModalBody = () => {
 
   return (
     <>
-      <Searchbar
-        delay={500}
-        immediateAction={handleIsSearching}
-        delayedAction={handleSearch}
-      />
+      <div className="my-4">
+        <Searchbar
+          delay={500}
+          immediateAction={handleIsSearching}
+          delayedAction={handleSearch}
+        />
+      </div>
       <ScrollTrigger
         offset={100}
-        onTop={handleGetNoneMembers}
+        onBottom={handleGetNoneMembers}
         containerClass="custom-modal-body"
       >
         {isSearching ? (

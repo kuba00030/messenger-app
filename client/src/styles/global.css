@@ -60,6 +60,9 @@ li {
 .fc-green-default {
   color: var(--fc-green-default) !important;
 }
+.fc-my-white-h:hover {
+  color: var(--fc-white) !important;
+}
 /* font size */
 .fs-xxs {
   font-size: var(--fs-xxs) !important;
@@ -113,6 +116,9 @@ li {
   border-color: var(--brc-gray) !important;
 }
 .b-default {
+  border-color: var(--brc-default) !important;
+}
+.b-default-f:focus {
   border-color: var(--brc-default) !important;
 }
 /* lists */

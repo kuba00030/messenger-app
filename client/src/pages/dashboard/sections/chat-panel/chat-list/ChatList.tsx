@@ -1,6 +1,5 @@
 import "./chat-list-item.css";
 import { Button } from "react-bootstrap";
-import { AddButton } from "../../../../../components/ui/buttons/Buttons";
 import { Header } from "../../../../../components/ui/header/Header";
 import {
   Notification,
@@ -17,7 +16,7 @@ type ChatLis = {
 type TChatListItem = {
   chatName: string;
   chatID: string;
-  userStatus: boolean;
+  chatStatus: boolean;
   notifications: Notification;
   avatar: any;
 };
@@ -27,7 +26,7 @@ const currentChat = "1";
 export const ChatListItem = ({
   chatName,
   chatID,
-  userStatus,
+  chatStatus,
   avatar,
   notifications,
 }: TChatListItem) => {
@@ -45,7 +44,7 @@ export const ChatListItem = ({
         chatID === currentChat ? "chat-list-item-active" : "bg-transparent"
       }  `}
     >
-      <ProfileCard avatar={avatar} status={userStatus} displayName={chatName} />
+      <ProfileCard avatar={avatar} status={chatStatus} displayName={chatName} />
       <NotificationBadge
         className="ms-auto my-auto bg-my-foggy rounded-1 fs-xxs fw-semibold p-1"
         notifications={notifications}
@@ -62,7 +61,6 @@ export const ChatList = ({ header, children }: ChatLis) => {
     >
       <div className="d-flex flex-row align-items-center justify-content-between mx-4 mx-md-2 mx-xl-4">
         <Header title={header} fontWeight="semibold" size="xs" color="gray" />
-        <AddButton onClick={() => console.log("New conversation")} />
       </div>
       <div className="d-flex flex-column overflow-auto mt-4">{children}</div>
     </div>

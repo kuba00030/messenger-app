@@ -21,7 +21,7 @@ export const ChatEditNameModalBody = () => {
   };
   return (
     <>
-      <div className="w-100 text-center">
+      <div className="w-100 text-center my-4">
         <span className="fc-my-gray fs-sm">
           Changing the name of a group chat will cause it to be changed for
           everyone.
@@ -43,7 +43,7 @@ export const ChatEditNameModalBody = () => {
           onClick={handleCloseModal}
         />
         <PrimaryButton
-          className={`border-0 ${
+          className={`border-0 rounded-1 ${
             chatRoom.name === newName ? "bg-default-darker" : "bg-default"
           }`}
           type="button"
